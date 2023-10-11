@@ -903,263 +903,265 @@ Vue.component('product', {
 	// Template Component.
 	template: `
 		<div>
-			<!-- Display message for premium/non-premium members -->
-			<div class="text-center">
-				<div v-if="premium">
-					<p>You are a premium meme-ber. Enjoy 10% off your items!</p>
+			<div>
+				<!-- Display message for premium/non-premium members -->
+				<div class="text-center">
+					<div v-if="premium">
+						<p>You are a premium meme-ber. Enjoy 10% off your items!</p>
+					</div>
+					<div v-else>
+						<p>Upgrade to premium for exclusive benefits!</p>
+					</div>
 				</div>
-				<div v-else>
-					<p>Upgrade to premium for exclusive benefits!</p>
+
+				<!-- Shopping cart icon and counter container -->
+				<div class="shopping-cart" @click="toggleCart">
+					<i class="fas fa-shopping-cart fa-2x"></i>
+					<!-- Shopping cart counter -->
+					<div class="cart-counter">{{ cartItemCount }}</div>
 				</div>
-			</div>
 
-			<!-- Shopping cart icon and counter container -->
-			<div class="shopping-cart" @click="toggleCart">
-				<i class="fas fa-shopping-cart fa-2x"></i>
-				<!-- Shopping cart counter -->
-				<div class="cart-counter">{{ cartItemCount }}</div>
-			</div>
-
-			<!-- Product component template -->
-			<div class="row">
-				<div v-for="product in products" :key="product.id" class="col-lg-4 col-md-6 col-sm-12">
-					<div class="product-card">
-						<h2 class="text-center mt-2">{{ product.name }}</h2>
-							<!-- Buttons placed at the bottom of the image -->
-							<div style="position: relative;">
-								<img :src="product.images[product.selectedColour][product.selectedSide]" alt="Product Image" class="img-fluid">
-								
-								<!-- Buttons overlaid on the image -->
-								<button @click="changeImage(product, 'front')" class="btn btn-primary" style="position: absolute; top: 80%; left: 28%;">Front</button>
-								<button @click="changeImage(product, 'back')" class="btn btn-primary" style="position: absolute; top: 80%; left: 58%;">Back</button>
-							</div>
-						</div>
-						
-						<div class="row">  
-							 
-							<!-- Div to loop through product description array and list contents -->  
-							<div class="col-6">
-								<div class="product-card h-100">
-									<h6>Product Description</h6>
-									<hr>
-									<!-- Padding for line break effect -->
-									<div class="padding">
-									</div>
-									<ul style="text-align: left;">
-										<li class="pb-2" v-for="item in product.description.split(', ')">{{ item }}</li>
-									</ul>
+				<!-- Product component template -->
+				<div class="row">
+					<div v-for="product in products" :key="product.id" class="col-lg-4 col-md-6 col-sm-12">
+						<div class="product-card">
+							<h2 class="text-center mt-2">{{ product.name }}</h2>
+								<!-- Buttons placed at the bottom of the image -->
+								<div style="position: relative;">
+									<img :src="product.images[product.selectedColour][product.selectedSide]" alt="Product Image" class="img-fluid">
+									
+									<!-- Buttons overlaid on the image -->
+									<button @click="changeImage(product, 'front')" class="btn btn-primary" style="position: absolute; top: 80%; left: 28%;">Front</button>
+									<button @click="changeImage(product, 'back')" class="btn btn-primary" style="position: absolute; top: 80%; left: 58%;">Back</button>
 								</div>
 							</div>
 							
-							<div class ="col-6">  
-								<div class="product-card h-100">
-								<h6>Order Form</h6>
-									<hr>
-									<!-- Div for product colour selection -->
-									<div class="row">
-										<div class="col-6 d-flex align-items-center justify-content-end">
-											<label for="colourSelect" class="text-right">Colour:</label>
+							<div class="row">  
+								
+								<!-- Div to loop through product description array and list contents -->  
+								<div class="col-6">
+									<div class="product-card h-100">
+										<h6>Product Description</h6>
+										<hr>
+										<!-- Padding for line break effect -->
+										<div class="padding">
 										</div>
-										<div class="col-6 text-center">
-											<select v-model="product.selectedColour" class="form-control" id="colourSelect" :style="{ width: '100%' }">
-												<option value="black">Black</option>
-												<option value="white">White</option> <!-- Default option - Could not use 'Colour' option as needed a display image -->
-											</select>
-										</div>
+										<ul style="text-align: left;">
+											<li class="pb-2" v-for="item in product.description.split(', ')">{{ item }}</li>
+										</ul>
 									</div>
-									<div class="row pt-2">
-										<!-- Div for product size selection -->
-										<div class="col-6 d-flex align-items-center justify-content-end">
-											<label for="sizeSelect" class="text-right">Size:</label>
+								</div>
+								
+								<div class ="col-6">  
+									<div class="product-card h-100">
+									<h6>Order Form</h6>
+										<hr>
+										<!-- Div for product colour selection -->
+										<div class="row">
+											<div class="col-6 d-flex align-items-center justify-content-end">
+												<label for="colourSelect" class="text-right">Colour:</label>
+											</div>
+											<div class="col-6 text-center">
+												<select v-model="product.selectedColour" class="form-control" id="colourSelect" :style="{ width: '100%' }">
+													<option value="black">Black</option>
+													<option value="white">White</option> <!-- Default option - Could not use 'Colour' option as needed a display image -->
+												</select>
+											</div>
 										</div>
-										<div class="col-6 text-center">
-											<select v-model="product.selectedSize" class="form-control" id="sizeSelect" :style="{ width: '100%' }">
-												<option value="Size">Size</option> <!-- Default option -->
-												<option value="XS">XS</option>
-												<option value="S">S</option>
-												<option value="M">M</option>
-												<option value="L">L</option>
-												<option value="XL">XL</option>
-												<option value="XXL">XXL</option>
-											</select>
+										<div class="row pt-2">
+											<!-- Div for product size selection -->
+											<div class="col-6 d-flex align-items-center justify-content-end">
+												<label for="sizeSelect" class="text-right">Size:</label>
+											</div>
+											<div class="col-6 text-center">
+												<select v-model="product.selectedSize" class="form-control" id="sizeSelect" :style="{ width: '100%' }">
+													<option value="Size">Size</option> <!-- Default option -->
+													<option value="XS">XS</option>
+													<option value="S">S</option>
+													<option value="M">M</option>
+													<option value="L">L</option>
+													<option value="XL">XL</option>
+													<option value="XXL">XXL</option>
+												</select>
+											</div>
 										</div>
-									</div>
-									<div class="row p-2">
-										<!-- Div for product SOH display based on colour and size -->
-										<div class="col-6 d-flex align-items-center justify-content-end">
-										<label for="sizeSelect" class="text-right">Stock:</label>
+										<div class="row p-2">
+											<!-- Div for product SOH display based on colour and size -->
+											<div class="col-6 d-flex align-items-center justify-content-end">
+											<label for="sizeSelect" class="text-right">Stock:</label>
+											</div>
+											<div class="col-6 d-flex align-items-center justify-content-start">
+												<div class="stock-on-hand-box ml-2">
+													<span v-if="product.selectedSize !== 'Size' && product.selectedColour !== 'Colour'">
+														{{ product.stockOnHand[product.selectedColour][product.selectedSize] }}
+													</span>
+												</div>
+											</div>
 										</div>
-										<div class="col-6 d-flex align-items-center justify-content-start">
-											<div class="stock-on-hand-box ml-2">
-												<span v-if="product.selectedSize !== 'Size' && product.selectedColour !== 'Colour'">
-													{{ product.stockOnHand[product.selectedColour][product.selectedSize] }}
-												</span>
+										<div class="row">
+											<!-- Div for product quantity selection -->
+											<div class="col-6 d-flex align-items-center justify-content-end">
+												<label for="qtySelect" class="text-right">Qty:</label>
+											</div>
+											<div class="col-6 text-center">
+												<select v-model="product.selectedQty" class="form-control" id="qtySelect" :style="{ width: '100%' }">
+													<option value="Qty">Qty</option> <!-- Default option -->
+													<option value="1">1</option>
+													<option value="2">2</option>
+													<option value="3">3</option>
+													<option value="4">4</option>
+													<option value="5">5</option>
+												</select>
 											</div>
 										</div>
 									</div>
-									<div class="row">
-										<!-- Div for product quantity selection -->
-										<div class="col-6 d-flex align-items-center justify-content-end">
-											<label for="qtySelect" class="text-right">Qty:</label>
-										</div>
-										<div class="col-6 text-center">
-											<select v-model="product.selectedQty" class="form-control" id="qtySelect" :style="{ width: '100%' }">
-												<option value="Qty">Qty</option> <!-- Default option -->
-												<option value="1">1</option>
-												<option value="2">2</option>
-												<option value="3">3</option>
-												<option value="4">4</option>
-												<option value="5">5</option>
-											</select>
-										</div>
-									</div>
 								</div>
-							</div>
-						</div>
-						<!-- Padding for line break effect -->
-						<div class="padding">
-						</div>
-						<!-- Div for product price -->
-						<p class="text-center" style="padding-top:5px;">Price: &dollar;{{ product.price }}</p>
-						<button @click="addToCart(product)" class="btn btn-success btn-primary mx-auto d-block" v-if="validateSelection(product)">Add to Cart</button>
-
-						<!-- Review Butttons - Use ternary operator to switch button text -->
-						<div class="text-center">
-							<div>
-								<button @click="toggleAddReviewForm(product)" class="btn btn-primary">
-									{{ product.showReviewForm ? 'Cancel Review' : 'Add Review' }}
-								</button>
-								<button @click="toggleShowReviews(product)" class="btn btn-primary">
-									{{ product.showReviews ? 'Close Reviews' : 'Show Reviews' }}
-								</button>
-							</div>
-						</div>
-						
-						<!-- Add Review Form -->
-						<div v-if="product.showReviewForm" style="display: flex; flex-direction: column; align-items: center; margin-top: 20px;">
-							<input v-model="product.newReview.name" placeholder="Your Name" style="margin: 10px 0;" required>
-							<textarea v-model="product.newReview.review" placeholder="Your Review" style="margin: 10px 0; width: 100%;" required></textarea>
-							<!-- Star rating review section -->
-							<div class="star-rating">
-								<span
-								v-for="star in 5"  
-								:key="star"
-								@click="selectRating(star)"
-								:class="{ 'selected': star <= selectedRating }"
-								>
-								★ 
-								</span>
 							</div>
 							<!-- Padding for line break effect -->
 							<div class="padding">
 							</div>
-							<button @click="addReview(product)" class="btn btn-primary">Submit</button>
-						</div>
-						
-						<!-- Show Reviews Section -->
-						<div v-if="product.showReviews" class="reviews-section mt-2 text-center">
-							<h2>Reviews</h2>
-							<!-- Display default message for no reviews else display reviews -->
-							<div v-if="product.reviews.length === 0">
-								<p>This product has not been reviewed yet.</p>
-							</div>
-							<div v-else>
-								<div v-for="(review, index) in product.reviews" :key="index" class="review-box">
-									<p>
-										<strong>{{ review.name }} says:</strong>
-										<span class="styled-quote">"{{ review.review }}"</span>
-										<div class="star-rating">
-											<span
-												v-for="star in 5"
-												:key="star"
-												:class="{ 'selected': star <= review.selectedRating }"
-											>
-												★ 
-											</span>
-										</div>
-									</p>                           
+							<!-- Div for product price -->
+							<p class="text-center" style="padding-top:5px;">Price: &dollar;{{ product.price }}</p>
+							<button @click="addToCart(product)" class="btn btn-success btn-primary mx-auto d-block" v-if="validateSelection(product)">Add to Cart</button>
+
+							<!-- Review Butttons - Use ternary operator to switch button text -->
+							<div class="text-center mt-3">
+								<div>
+									<button @click="toggleAddReviewForm(product)" class="btn btn-primary">
+										{{ product.showReviewForm ? 'Cancel Review' : 'Add Review' }}
+									</button>
+									<button @click="toggleShowReviews(product)" class="btn btn-primary">
+										{{ product.showReviews ? 'Close Reviews' : 'Show Reviews' }}
+									</button>
 								</div>
 							</div>
-						</div>		
-						<hr>			
+							
+							<!-- Add Review Form -->
+							<div v-if="product.showReviewForm" style="display: flex; flex-direction: column; align-items: center; margin-top: 20px;">
+								<input v-model="product.newReview.name" placeholder="Your Name" style="margin: 10px 0;" required>
+								<textarea v-model="product.newReview.review" placeholder="Your Review" style="margin: 10px 0; width: 100%;" required></textarea>
+								<!-- Star rating review section -->
+								<div class="star-rating">
+									<span
+									v-for="star in 5"  
+									:key="star"
+									@click="selectRating(star)"
+									:class="{ 'selected': star <= selectedRating }"
+									>
+									★ 
+									</span>
+								</div>
+								<!-- Padding for line break effect -->
+								<div class="padding">
+								</div>
+								<button @click="addReview(product)" class="btn btn-primary">Submit</button>
+							</div>
+							
+							<!-- Show Reviews Section -->
+							<div v-if="product.showReviews" class="reviews-section mt-2 text-center">
+								<h2>Reviews</h2>
+								<!-- Display default message for no reviews else display reviews -->
+								<div v-if="product.reviews.length === 0">
+									<p>This product has not been reviewed yet.</p>
+								</div>
+								<div v-else>
+									<div v-for="(review, index) in product.reviews" :key="index" class="review-box">
+										<p>
+											<strong>{{ review.name }} says:</strong>
+											<span class="styled-quote">"{{ review.review }}"</span>
+											<div class="star-rating">
+												<span
+													v-for="star in 5"
+													:key="star"
+													:class="{ 'selected': star <= review.selectedRating }"
+												>
+													★ 
+												</span>
+											</div>
+										</p>                           
+									</div>
+								</div>
+							</div>		
+							<hr>			
+						</div>
 					</div>
 				</div>
-			</div>
-			<!-- End Product component template -->
+				<!-- End Product component template -->
 
-			<!-- Toggle View Cart Button -->
-			<button @click="toggleCart" class="btn btn-primary mx-auto d-block">View Cart</button>   
+				<!-- Toggle View Cart Button -->
+				<button @click="toggleCart" class="btn btn-primary mx-auto d-block">View Cart</button>   
 
-			<!-- Shopping Cart Pop-up -->
-			<div v-if="showCart" class="cart-popup">
-				<h3 v-if="cart.length === 0">Your Shopping Cart is Empty</h3>
-				<h3 v-else>Your Shopping Cart</h3>
-				<!-- Display table headers -->
-				<table class="table">
-					<thead>
-						<tr>
-							<th>ID</th>
-							<th>Item</th>
-							<th>Colour</th>
-							<th>Size</th>
-							<th>Quantity</th>
-							<th>Price</th>
-							<th></th> <!-- Empty header for the Remove button -->
-						</tr>
-					</thead>
-					<tbody>
-						<!-- Populate cart table data -->
-						<tr v-for="(item, index) in cart" :key="index">
-							<td>#{{ item.id }}</td>
-							<td>{{ item.name }}</td>
-							<td>{{ item.selectedColour }}</td>
-							<td>{{ item.selectedSize }}</td>
-							<td>{{ item.selectedQty }}</td>
-							<td>{{ (item.selectedQty * item.price).toFixed(2) }}</td>
-							<td><button @click="removeFromCart(index)">Remove</button></td>
-						</tr>
-						<!-- Add a space between cart items and extras -->
-						<tr>
-							<td colspan="4"></td>
-							<td colspan="3"></td>
-						</tr>
-						<!-- Display the Premium Discount item row if the customer is premium -->
-						<tr v-if="premium">
-							<td>{{ premiumDiscountItem.id }}</td>
-							<td>{{ discounttext }}</td>
-							<td></td> <!-- No colour for discount item -->
-							<td></td> <!-- No size for discount item -->
-							<td></td> <!-- No quantity for discount item -->                          
-							<td>
-							<!-- Calculate the premium discount on the items in the table (excluding shipping) -->
-							-{{ (cartSubtotal * discount).toFixed(2) }}
-							</td>
-							<td></td> <!-- Empty cell for Remove button -->
-						</tr>
-						<!-- Display the Shipping item -->
-						<tr v-if="cart.length > 0">
-							<td>{{ shippingItem.id }}</td>
-							<td>{{ shippingItem.name }}</td>
-							<td></td> <!-- No colour for shipping item -->
-							<td></td> <!-- No size for shipping item -->
-							<td>{{ shippingItem.selectedQty }}</td>
-							<!-- Determine shipping costs based on item price total -->
-							<td>
-								<span v-if="totalCartValue < 50">{{ shippingItem.price.toFixed(2) }}</span>
-								<span v-else style="text-decoration: line-through">{{ shippingItem.price.toFixed(2) }}</span>
-							</td>
-							<td><button @click="clearCart">Clear Cart</button></td> <!-- Clear Cart button in the shipping row -->
-						</tr>
-						</tbody>
-					</table>
-				<p>Total: {{ cartGrandTotal }}</p> <!-- Use the computed property for grand total -->
-				<!-- Checkout button -->
-				<button @click="checkout" class="btn btn-success mx-auto d-block" v-if="cart.length > 0">Checkout</button>
-				<!-- Padding for line break effect -->
-				<div class="padding">
+				<!-- Shopping Cart Pop-up -->
+				<div v-if="showCart" class="cart-popup">
+					<h3 v-if="cart.length === 0">Your Shopping Cart is Empty</h3>
+					<h3 v-else>Your Shopping Cart</h3>
+					<!-- Display table headers -->
+					<table class="table">
+						<thead>
+							<tr>
+								<th>ID</th>
+								<th>Item</th>
+								<th>Colour</th>
+								<th>Size</th>
+								<th>Quantity</th>
+								<th>Price</th>
+								<th></th> <!-- Empty header for the Remove button -->
+							</tr>
+						</thead>
+						<tbody>
+							<!-- Populate cart table data -->
+							<tr v-for="(item, index) in cart" :key="index">
+								<td>#{{ item.id }}</td>
+								<td>{{ item.name }}</td>
+								<td>{{ item.selectedColour }}</td>
+								<td>{{ item.selectedSize }}</td>
+								<td>{{ item.selectedQty }}</td>
+								<td>{{ (item.selectedQty * item.price).toFixed(2) }}</td>
+								<td><button @click="removeFromCart(index)">Remove</button></td>
+							</tr>
+							<!-- Add a space between cart items and extras -->
+							<tr>
+								<td colspan="4"></td>
+								<td colspan="3"></td>
+							</tr>
+							<!-- Display the Premium Discount item row if the customer is premium -->
+							<tr v-if="premium">
+								<td>{{ premiumDiscountItem.id }}</td>
+								<td>{{ discounttext }}</td>
+								<td></td> <!-- No colour for discount item -->
+								<td></td> <!-- No size for discount item -->
+								<td></td> <!-- No quantity for discount item -->                          
+								<td>
+								<!-- Calculate the premium discount on the items in the table (excluding shipping) -->
+								-{{ (cartSubtotal * discount).toFixed(2) }}
+								</td>
+								<td></td> <!-- Empty cell for Remove button -->
+							</tr>
+							<!-- Display the Shipping item -->
+							<tr v-if="cart.length > 0">
+								<td>{{ shippingItem.id }}</td>
+								<td>{{ shippingItem.name }}</td>
+								<td></td> <!-- No colour for shipping item -->
+								<td></td> <!-- No size for shipping item -->
+								<td>{{ shippingItem.selectedQty }}</td>
+								<!-- Determine shipping costs based on item price total -->
+								<td>
+									<span v-if="totalCartValue < 50">{{ shippingItem.price.toFixed(2) }}</span>
+									<span v-else style="text-decoration: line-through">{{ shippingItem.price.toFixed(2) }}</span>
+								</td>
+								<td><button @click="clearCart">Clear Cart</button></td> <!-- Clear Cart button in the shipping row -->
+							</tr>
+							</tbody>
+						</table>
+					<p>Total: {{ cartGrandTotal }}</p> <!-- Use the computed property for grand total -->
+					<!-- Checkout button -->
+					<button @click="checkout" class="btn btn-success mx-auto d-block" v-if="cart.length > 0">Checkout</button>
+					<!-- Padding for line break effect -->
+					<div class="padding">
+					</div>
+					<!-- Close Cart button -->
+					<button @click="toggleCart" class="btn btn-primary mx-auto d-block">Close Cart</button>
 				</div>
-				<!-- Close Cart button -->
-				<button @click="toggleCart" class="btn btn-primary mx-auto d-block">Close Cart</button>
 			</div>
 		</div>
 	`,
