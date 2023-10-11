@@ -301,4 +301,10 @@ p a{
         padding: 3px 6px;
         margin-top: 3px;
     }
+
+    /* Override font for <p> elements on mobile */
+    p {
+        font-size: 14px; /* Adjust the font size as needed */
+        font-family: Arial, sans-serif; /* Change the font family as needed */
+    }
 }
