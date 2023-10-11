@@ -308,23 +308,22 @@ p a{
         font-family: Arial, sans-serif; /* Change the font family as needed */
     }
 
-    .cart-popup h3 {
-        font-size: 12px;
-        margin-bottom: 10px;
+    .cart-popup {
+        padding: 20px; /* Add more padding for better spacing on mobile */
     }
-      
-    .cart-popup ul {
-        list-style-type: none;
-        padding: 0;
+
+    table {
+        width: 100%; /* Make the table take the full width of the container */
     }
-      
-    .cart-popup li {
-        font-size: 9px;
-        margin-bottom: 5px;
+
+    th, td {
+        padding: 5px; /* Add padding to table cells for better spacing */
+        font-size: 12px; /* Adjust font size as needed for mobile */
     }
-      
-    .cart-popup p {
-        font-size: 10px;
-        font-weight: bold;
+
+    /* Center align table text on mobile (optional) */
+    td {
+        text-align: center;
     }
+    
 }
