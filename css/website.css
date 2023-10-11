@@ -283,3 +283,22 @@ p a{
 .star-rating span.selected {
     color: #ffac42; /* Colour of filled stars */
 }
+
+/* Shopping cart styles for mobile devices */
+@media (max-width: 992px) {
+    .shopping-cart {
+        top: 10px;
+        right: 10px;
+        padding: 5px;
+    }
+
+    .shopping-cart i {
+        font-size: 1.5em; /* Adjust the icon size as needed */
+    }
+
+    .cart-counter {
+        font-size: 0.8em;
+        padding: 3px 6px;
+        margin-top: 3px;
+    }
+}
