@@ -319,5 +319,9 @@ p a{
     td {
         text-align: center;
     }
+
+    h5 {
+        font-size: 10px;
+    }
     
 }
