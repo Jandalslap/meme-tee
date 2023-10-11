@@ -284,6 +284,7 @@ p a{
     color: #ffac42; /* Colour of filled stars */
 }
 
+
 /* Shopping cart styles for mobile devices */
 @media (max-width: 992px) {
     .shopping-cart {
@@ -318,10 +319,6 @@ p a{
     /* Center align table text on mobile (optional) */
     td {
         text-align: center;
-    }
-
-    h5 {
-        font-size: 10px;
     }
     
 }

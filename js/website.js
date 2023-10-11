@@ -925,91 +925,106 @@ Vue.component('product', {
 				<div v-for="product in products" :key="product.id" class="col-lg-4 col-md-6 col-sm-12">
 					<div class="product-card">
 						<h2 class="text-center mt-2">{{ product.name }}</h2>
-						<img :src="product.images[product.selectedColour][product.selectedSide]" alt="Product Image" class="img-fluid">
-						<!-- Div to change image based on colour choice -->
-						<div class="row mt-2 d-flex justify-content-center">
-							<div class="col-2 text-center">
-								<button @click="changeImage(product, 'front')" class="btn btn-primary">Front</button>
-							</div>
-							<div class="col-2 text-center">
-								<button @click="changeImage(product, 'back')" class="btn btn-primary" style="padding-left: 14px; padding-right: 14px;">Back</button>
+							<!-- Buttons placed at the bottom of the image -->
+							<div style="position: relative;">
+								<img :src="product.images[product.selectedColour][product.selectedSide]" alt="Product Image" class="img-fluid">
+								
+								<!-- Buttons overlaid on the image -->
+								<button @click="changeImage(product, 'front')" class="btn btn-primary" style="position: absolute; top: 80%; left: 28%;">Front</button>
+								<button @click="changeImage(product, 'back')" class="btn btn-primary" style="position: absolute; top: 80%; left: 58%;">Back</button>
 							</div>
 						</div>
-						<div class="row">   
+						
+						<div class="row">  
+							 
 							<!-- Div to loop through product description array and list contents -->  
 							<div class="col-6">
-								<h5>Product Description:</h5>
-								<ul style="text-align: left;">
-									<li v-for="item in product.description.split(', ')">{{ item }}</li>
-								</ul>
+								<div class="product-card h-100">
+									<h6>Product Description</h6>
+									<hr>
+									<!-- Padding for line break effect -->
+									<div class="padding">
+									</div>
+									<ul style="text-align: left;">
+										<li class="pb-2" v-for="item in product.description.split(', ')">{{ item }}</li>
+									</ul>
+								</div>
 							</div>
+							
 							<div class ="col-6">  
-								<!-- Div for product colour selection -->
-								<div class="row">
-									<div class="col-6 d-flex align-items-center justify-content-end">
-										<label for="colourSelect" class="text-right">Colour:</label>
+								<div class="product-card h-100">
+								<h6>Order Form</h6>
+									<hr>
+									<!-- Div for product colour selection -->
+									<div class="row">
+										<div class="col-6 d-flex align-items-center justify-content-end">
+											<label for="colourSelect" class="text-right">Colour:</label>
+										</div>
+										<div class="col-6 text-center">
+											<select v-model="product.selectedColour" class="form-control" id="colourSelect" :style="{ width: '100%' }">
+												<option value="black">Black</option>
+												<option value="white">White</option> <!-- Default option - Could not use 'Colour' option as needed a display image -->
+											</select>
+										</div>
 									</div>
-									<div class="col-6 text-center">
-										<select v-model="product.selectedColour" class="form-control" id="colourSelect" :style="{ width: '100%' }">
-											<option value="black">Black</option>
-											<option value="white">White</option> <!-- Default option - Could not use 'Colour' option as needed a display image -->
-										</select>
+									<div class="row pt-2">
+										<!-- Div for product size selection -->
+										<div class="col-6 d-flex align-items-center justify-content-end">
+											<label for="sizeSelect" class="text-right">Size:</label>
+										</div>
+										<div class="col-6 text-center">
+											<select v-model="product.selectedSize" class="form-control" id="sizeSelect" :style="{ width: '100%' }">
+												<option value="Size">Size</option> <!-- Default option -->
+												<option value="XS">XS</option>
+												<option value="S">S</option>
+												<option value="M">M</option>
+												<option value="L">L</option>
+												<option value="XL">XL</option>
+												<option value="XXL">XXL</option>
+											</select>
+										</div>
 									</div>
-								</div>
-								<div class="row pt-2">
-									<!-- Div for product size selection -->
-									<div class="col-6 d-flex align-items-center justify-content-end">
-										<label for="sizeSelect" class="text-right">Size:</label>
+									<div class="row p-2">
+										<!-- Div for product SOH display based on colour and size -->
+										<div class="col-6 d-flex align-items-center justify-content-end">
+										<label for="sizeSelect" class="text-right">Stock:</label>
+										</div>
+										<div class="col-6 d-flex align-items-center justify-content-start">
+											<div class="stock-on-hand-box ml-2">
+												<span v-if="product.selectedSize !== 'Size' && product.selectedColour !== 'Colour'">
+													{{ product.stockOnHand[product.selectedColour][product.selectedSize] }}
+												</span>
+											</div>
+										</div>
 									</div>
-									<div class="col-6 text-center">
-										<select v-model="product.selectedSize" class="form-control" id="sizeSelect" :style="{ width: '70%' }">
-											<option value="Size">Size</option> <!-- Default option -->
-											<option value="XS">XS</option>
-											<option value="S">S</option>
-											<option value="M">M</option>
-											<option value="L">L</option>
-											<option value="XL">XL</option>
-											<option value="XXL">XXL</option>
-										</select>
-									</div>
-								</div>
-								<div class="row p-2">
-									<!-- Div for product SOH display based on colour and size -->
-									<div class="col-6 d-flex align-items-center justify-content-end">
-									<label for="sizeSelect" class="text-right">Stock:</label>
-									</div>
-									<div class="col-6 d-flex align-items-center justify-content-start">
-										<div class="stock-on-hand-box ml-2">
-											<span v-if="product.selectedSize !== 'Size' && product.selectedColour !== 'Colour'">
-												{{ product.stockOnHand[product.selectedColour][product.selectedSize] }}
-											</span>
+									<div class="row">
+										<!-- Div for product quantity selection -->
+										<div class="col-6 d-flex align-items-center justify-content-end">
+											<label for="qtySelect" class="text-right">Qty:</label>
+										</div>
+										<div class="col-6 text-center">
+											<select v-model="product.selectedQty" class="form-control" id="qtySelect" :style="{ width: '100%' }">
+												<option value="Qty">Qty</option> <!-- Default option -->
+												<option value="1">1</option>
+												<option value="2">2</option>
+												<option value="3">3</option>
+												<option value="4">4</option>
+												<option value="5">5</option>
+											</select>
 										</div>
 									</div>
 								</div>
-								<div class="row">
-									<!-- Div for product quantity selection -->
-									<div class="col-6 d-flex align-items-center justify-content-end">
-										<label for="qtySelect" class="text-right">Qty:</label>
-									</div>
-									<div class="col-6 text-center">
-										<select v-model="product.selectedQty" class="form-control" id="qtySelect" :style="{ width: '60%' }">
-											<option value="Qty">Qty</option> <!-- Default option -->
-											<option value="1">1</option>
-											<option value="2">2</option>
-											<option value="3">3</option>
-											<option value="4">4</option>
-											<option value="5">5</option>
-										</select>
-									</div>
-								</div>
 							</div>
-							<!-- Div for product price -->
-							<p class="text-center" style="padding-top:5px;">Price: {{ product.price }}</p>
-							<button @click="addToCart(product)" class="btn btn-success btn-primary mx-auto d-block" v-if="validateSelection(product)">Add to Cart</button>
-							<!-- Padding for line break effect -->
-							<div class="padding">
-							</div>
-							<!-- Review Butttons - Use ternary operator to switch button text -->
+						</div>
+						<!-- Padding for line break effect -->
+						<div class="padding">
+						</div>
+						<!-- Div for product price -->
+						<p class="text-center" style="padding-top:5px;">Price: {{ product.price }}</p>
+						<button @click="addToCart(product)" class="btn btn-success btn-primary mx-auto d-block" v-if="validateSelection(product)">Add to Cart</button>
+
+						<!-- Review Butttons - Use ternary operator to switch button text -->
+						<div class="text-center">
 							<div>
 								<button @click="toggleAddReviewForm(product)" class="btn btn-primary">
 									{{ product.showReviewForm ? 'Cancel Review' : 'Add Review' }}
@@ -1018,54 +1033,55 @@ Vue.component('product', {
 									{{ product.showReviews ? 'Close Reviews' : 'Show Reviews' }}
 								</button>
 							</div>
-							
-							<!-- Add Review Form -->
-							<div v-if="product.showReviewForm" style="display: flex; flex-direction: column; align-items: center; margin-top: 20px;">
-								<input v-model="product.newReview.name" placeholder="Your Name" style="margin: 10px 0;" required>
-								<textarea v-model="product.newReview.review" placeholder="Your Review" style="margin: 10px 0; width: 100%;" required></textarea>
-								<!-- Star rating review section -->
-								<div class="star-rating">
-									<span
-									v-for="star in 5"  
-									:key="star"
-									@click="selectRating(star)"
-									:class="{ 'selected': star <= selectedRating }"
-									>
-									★ 
-									</span>
-								</div>
-								<!-- Padding for line break effect -->
-								<div class="padding">
-								</div>
-								<button @click="addReview(product)" class="btn btn-primary">Submit</button>
-							</div>
-							
-							<!-- Show Reviews Section -->
-							<div v-if="product.showReviews" class="reviews-section mt-2">
-								<h2>Reviews</h2>
-								<!-- Display default message for no reviews else display reviews -->
-								<div v-if="product.reviews.length === 0">
-									<p>This product has not been reviewed yet.</p>
-								</div>
-								<div v-else>
-									<div v-for="(review, index) in product.reviews" :key="index" class="review-box">
-										<p>
-											<strong>{{ review.name }} says:</strong>
-											<span class="styled-quote">"{{ review.review }}"</span>
-											<div class="star-rating">
-												<span
-													v-for="star in 5"
-													:key="star"
-													:class="{ 'selected': star <= review.selectedRating }"
-												>
-													★ 
-												</span>
-											</div>
-										</p>                           
-									</div>
-								</div>
-							</div>
 						</div>
+						
+						<!-- Add Review Form -->
+						<div v-if="product.showReviewForm" style="display: flex; flex-direction: column; align-items: center; margin-top: 20px;">
+							<input v-model="product.newReview.name" placeholder="Your Name" style="margin: 10px 0;" required>
+							<textarea v-model="product.newReview.review" placeholder="Your Review" style="margin: 10px 0; width: 100%;" required></textarea>
+							<!-- Star rating review section -->
+							<div class="star-rating">
+								<span
+								v-for="star in 5"  
+								:key="star"
+								@click="selectRating(star)"
+								:class="{ 'selected': star <= selectedRating }"
+								>
+								★ 
+								</span>
+							</div>
+							<!-- Padding for line break effect -->
+							<div class="padding">
+							</div>
+							<button @click="addReview(product)" class="btn btn-primary">Submit</button>
+						</div>
+						
+						<!-- Show Reviews Section -->
+						<div v-if="product.showReviews" class="reviews-section mt-2 text-center">
+							<h2>Reviews</h2>
+							<!-- Display default message for no reviews else display reviews -->
+							<div v-if="product.reviews.length === 0">
+								<p>This product has not been reviewed yet.</p>
+							</div>
+							<div v-else>
+								<div v-for="(review, index) in product.reviews" :key="index" class="review-box">
+									<p>
+										<strong>{{ review.name }} says:</strong>
+										<span class="styled-quote">"{{ review.review }}"</span>
+										<div class="star-rating">
+											<span
+												v-for="star in 5"
+												:key="star"
+												:class="{ 'selected': star <= review.selectedRating }"
+											>
+												★ 
+											</span>
+										</div>
+									</p>                           
+								</div>
+							</div>
+						</div>		
+						<hr>			
 					</div>
 				</div>
 			</div>
