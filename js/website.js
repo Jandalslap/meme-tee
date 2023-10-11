@@ -932,16 +932,13 @@ Vue.component('product', {
 							<h2 class="text-center mt-2">{{ product.name }}</h2>
 								<!-- Buttons placed at the bottom of the image -->
 								<div style="position: relative;">
-									<img :src="product.images[product.selectedColour][product.selectedSide]" alt="Product Image" class="img-fluid">
-									
+									<img :src="product.images[product.selectedColour][product.selectedSide]" alt="Product Image" class="img-fluid">	
 									<!-- Buttons overlaid on the image -->
 									<button @click="changeImage(product, 'front')" class="btn btn-primary" style="position: absolute; top: 80%; left: 28%;">Front</button>
 									<button @click="changeImage(product, 'back')" class="btn btn-primary" style="position: absolute; top: 80%; left: 58%;">Back</button>
 								</div>
-							</div>
-							
-							<div class="row">  
-								
+							</div>							
+							<div class="row">  					
 								<!-- Div to loop through product description array and list contents -->  
 								<div class="col-6">
 									<div class="product-card h-100">
@@ -954,8 +951,7 @@ Vue.component('product', {
 											<li class="pb-2" v-for="item in product.description.split(', ')">{{ item }}</li>
 										</ul>
 									</div>
-								</div>
-								
+								</div>							
 								<div class ="col-6">  
 									<div class="product-card h-100">
 									<h6>Order Form</h6>
@@ -1141,8 +1137,7 @@ Vue.component('product', {
 							<tr>
 								<td colspan="4"></td>
 								<td colspan="3"></td>
-							</tr>
-							
+							</tr>						
 							<!-- Display the Premium Discount item row if the customer is premium -->
 							<tr v-if="premium">
 								<td>{{ premiumDiscountItem.id }}</td>
