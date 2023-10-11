@@ -938,7 +938,7 @@ Vue.component('product', {
 						<div class="row">   
 							<!-- Div to loop through product description array and list contents -->  
 							<div class="col-6">
-								<p>Product Description:</p>
+								<h3>Product Description:</h3>
 								<ul style="text-align: left;">
 									<li v-for="item in product.description.split(', ')">{{ item }}</li>
 								</ul>
