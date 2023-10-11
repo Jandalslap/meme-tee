@@ -1,0 +1,158 @@
+<!doctype html>
+
+<!-- Meme-Tee Products Page -->
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Browser tab title -->
+        <title>Meme-Tee - Products</title>
+
+        <!-- CSS Links -->
+        <!-- Internal css docs -->
+        <link rel="stylesheet" href="css/website.css">
+
+        <!-- External css links -->
+        <!-- Bootstrap css -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+        <!-- Font-Awesome - for all fab fa icons -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.css">
+
+        <style>
+            /* Custom CSS to verride Bootstrap and center-align the collapsed navigation menu links */
+            @media (max-width: 992px) {
+                .navbar-collapse .navbar-nav {
+                    text-align: center;
+                }
+        
+                .navbar-collapse .navbar-nav .nav-item {
+                    display: inline-block;
+                }
+            }
+        </style>
+
+    </head>
+    <body>
+        <!-- Navigation bar start -->
+        <nav id="top" class="navbar navbar-dark navbar-expand-lg" style="background-color: #000000; padding-top: 30px; padding-bottom: 15px;">
+
+            <!-- Hamburger menu for responsive design -->
+            <button class="navbar-toggler mx-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- Removed links for other pages -->
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <p class="nav-link" style="color: #FFFFFF;" href="">Home</p>
+                    </li>
+                    <li class="nav-item active"> <!-- Note: 'active' menu page -->
+                        <a class="nav-link" style="color: #FFFFFF; padding-bottom: 20px;" href="products.html">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <p class="nav-link" style="color: #FFFFFF;" href="">About Us</p>
+                    </li>
+                    <li class="nav-item">
+                        <p class="nav-link" style="color: #FFFFFF;" href="">Contact</p>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <!-- Navigation bar end -->
+
+        <!-- Page Heading -->
+        <h1 class="page-heading">
+            <!-- Meme-Tee Logo -->
+            <a class="navbar-brand" href="products.html#logo_link"> <!-- Link inactive -->
+                <img src="images/meme-tee.jpg" alt="Meme-Tee Logo" width="75" height="75">
+            </a>
+            <span class="red-text">Celebrity</span>
+            <span class="black-text">Meme-</span><span class="blue-text">Tees</span>           
+        </h1>
+
+        <!-- Padding for line break effect -->
+        <div class="padding">
+        </div>
+
+        <!-- Ad Banner -->
+        <div class="banner">
+            <p>Free Shipping when you spend $50 or more!</p>
+        </div>
+
+        <!-- The div element to render Vue screen notifications -->
+        <div id="notification-app">
+        </div>
+
+        <!-- The div element to render Vue app instance -->
+        <div id="app">
+            <!-- Bind premium property to the product component -->
+            <product :premium="premium" :discount="discount" :discounttext="discounttext"></product>	
+        </div>
+      
+        <!-- Padding for line break effect -->
+        <div class="padding">
+        </div>
+
+        <!-- Footer start -->
+        <footer class="text-center text-black" style="background-color: #000000";>
+            <!-- Back to top link -->
+            <div class="container p-4">
+                <div class="row">
+                    <h5>                                    
+                    <a href="products.html#top" class="text-light nav-item active">Back to Top &nbsp;</a>                   
+                    </h5>              
+                </div>
+
+            <!-- Container for social media icon links -->
+            <div class="container p-4 pb-0">
+                <section class="mb-4">
+                <!-- Facebook -->
+                <a class="btn btn-outline-light btn-floating m-1" href="https://www.facebook.com" target=”_blank” title="Facebook" role="button"
+                    ><i class="fab fa-facebook-f"></i
+                ></a>
+            
+                <!-- Twitter -->
+                <a class="btn btn-outline-light btn-floating m-1" href="https://www.twitter.com" target=”_blank” title="Twitter" role="button"
+                    ><i class="fab fa-twitter"></i
+                ></a>
+            
+                <!-- Instagram -->
+                <a class="btn btn-outline-light btn-floating m-1" href="https://www.instagram.com" target=”_blank” title="Instagram" role="button"
+                    ><i class="fab fa-instagram"></i
+                ></a>
+            
+                <!-- Linkedin -->
+                <a class="btn btn-outline-light btn-floating m-1" href="https://nz.linkedin.com" target=”_blank” title="LinkdIn" role="button"
+                    ><i class="fab fa-linkedin-in"></i
+                ></a>
+            
+                <!-- Github -->
+                <a class="btn btn-outline-light btn-floating m-1" href="https://www.github.com" target=”_blank” title="GitHub" role="button"
+                    ><i class="fab fa-github"></i
+                ></a>
+                </section>
+            </div>
+            <!-- Copyright -->
+            <div class="text-center text-light";>
+                © 2023 Meme-Tee Co | All Rights Reserved
+            </div>
+        </footer>  
+        <!-- Footer end -->
+
+        <!-- Javascript links -->
+
+        <!-- External javascript links -->
+        <!-- Bootstrap javascript -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+        <!-- Vue CDN -->
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+
+
+        <!-- Internal javascript file -->
+        <script src="js/website.js"></script>
+
+    </body>
+
+</html>

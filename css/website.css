@@ -1,0 +1,285 @@
+/* Default CSS Style Sheet for Vue Website */
+
+/* Overall page behaviour */
+*,
+*:before,
+*:after {
+  box-sizing: inherit;	
+}
+/* Red asterix symbol for required fields in forms */
+*.required::after {
+    content: ' *';
+    color: red;
+}
+
+/* Default html styling for each page */
+html {
+	scroll-behavior: smooth;
+	height: 100%;
+	box-sizing: border-box;
+	min-height: 100%;
+    position: relative;
+	margin: 0;
+	padding: 0;
+    background-color: #FFFFFF;
+    color: #000000;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+/* Page headings large */
+.heading {
+    color: #FFFFFF;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 80px; 
+}
+
+/* All p tags are this size */
+p {
+    font-size: 16pt;
+}
+
+/* Padding dark */
+.padding {
+    padding-top:23px;
+    background-color: #FFFFFF;
+}
+
+/* Cart box area defaults */
+.cart_box {
+    background-color: #FFFFFF;
+    color: #000000;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+    text-align: center;
+    justify-content: center;
+}
+
+/* Background colour for borders */
+.bg_border {
+    background-color: #FFFFFF;
+}
+
+/* h1 tags inside containers have no line space after */
+.container h1 {
+    margin: 0;
+    padding: 0;
+}
+
+/* p tags inside containers have no line space after */
+.container p {
+    margin: 0;
+    padding: 0;
+}
+
+/* Alignment option */
+.center_items {
+    text-align: center;
+    justify-content: center;
+}
+
+/* Bootstrap override on font-family */
+.text-light {
+    font-family: 'Times New Roman', Times, serif;
+    text-decoration: none;
+}
+
+/* Hover effect over links */
+    button:hover, a:hover {
+	opacity: 0.7;
+}
+
+/* Nav bar effect on active */
+.nav-item.active {
+    color: #000000;
+    font-weight: bold;
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+}
+
+/* Remove underlines from links and style colour */
+p a{
+    color: #000000;
+    text-decoration: none;
+}
+
+/* Alignment for specifications disclaimer */
+.disclaimer {
+    text-align: left;
+    bottom:0;
+}
+
+/* Style for the shopping cart container */
+.shopping-cart {
+    position: fixed;
+    top: 5px;
+    right: 20px;
+    z-index: 1000;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+  
+/* Style for the shopping cart icon */
+.shopping-cart i {
+    font-size: 2em; /* Make the icon twice as big */
+}
+  
+/* Style for the shopping cart counter */
+.cart-counter {
+    background-color: red;
+    color: white;
+    font-size: 1em;
+    border-radius: 50%;
+    padding: 5px 10px; 
+    margin-top: 5px; 
+}
+
+/* Hover effect for the shopping cart */
+.shopping-cart:hover {
+    opacity: 0.7;
+}
+
+/* Shopping cart pop-up */
+.cart-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    color: white;
+}
+  
+.cart-popup h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+  
+.cart-popup ul {
+    list-style-type: none;
+    padding: 0;
+}
+  
+.cart-popup li {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+  
+.cart-popup p {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* Notifications */
+.notification {
+    position: fixed;
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Center both vertically and horizontally */
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    z-index: 1000; /* Ensure it's above other content */
+}
+  
+/* Additional styles for notification types */
+.notification.success {
+    background-color: rgba(0, 128, 0, 0.7); /* Green background for success messages */
+}
+  
+.notification.error {
+    background-color: rgba(255, 0, 0, 0.7); /* Red background for error messages */
+}
+
+/* Page Heading */
+.page-heading {
+    font-size: 36px;
+    text-align: center;
+    text-transform: uppercase;
+    margin-top: 20px;
+    letter-spacing: 2px;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Text shadow for added depth */
+}
+
+/* Custom heading text colours */
+.page-heading .red-text {
+    color: #ff0000; /* Red colour */
+}
+
+.page-heading .black-text {
+    color: #000000; /* Black colour */
+}
+
+.page-heading .blue-text {
+    color: #0000ff; /* Blue colour */
+}
+
+/* Product cards */
+.product-card {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin: 10px 0px 10px 5px; /* Margin values: top, right, bottom, left */
+    text-align: center;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box; /* Include border and padding in total width */
+}
+
+/* Middle product card columns less margin */
+.custom-middle-column {
+    margin: 10px 5px; /* Adjust margin as needed */
+}
+
+
+/* Ad banner */
+.banner {
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
+/* Ad banner hover effect */
+.banner:hover {
+    background-color: #2980b9; /* Hover background colour */
+}
+
+/* Reviews section */
+.reviews-section {
+    font-family: 'Times New Roman', Times, serif, cursive;
+    margin-top: 20px; /* Add margin between reviews */
+}
+
+/* Review quote */
+.styled-quote {
+    font-size: 24px; /* Adjust the size of the quotation marks as needed */
+    font-family: 'Times New Roman', Times, serif, cursive; 
+    color: #0f52ef;
+}
+
+/* Star rating */
+.star-rating {
+    font-size: 36px; /* Adjust the size as needed */
+}
+  
+.star-rating span {
+    cursor: pointer;
+    color: #ccc; /* Colour of empty stars */
+}
+  
+.star-rating span.selected {
+    color: #ffac42; /* Colour of filled stars */
+}
