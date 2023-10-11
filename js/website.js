@@ -976,7 +976,7 @@ Vue.component('product', {
 								<div class="row p-2">
 									<!-- Div for product SOH display based on colour and size -->
 									<div class="col-6 d-flex align-items-center justify-content-end">
-									<label for="sizeSelect" class="text-right">In Stock:</label>
+									<label for="sizeSelect" class="text-right">Stock:</label>
 									</div>
 									<div class="col-6 d-flex align-items-center justify-content-start">
 										<div class="stock-on-hand-box ml-2">
