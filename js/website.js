@@ -89,6 +89,10 @@ Vue.component('product', {
 			selectedQty: 1, // Default quantity for shipping
 			price: 9.95 // Shipping price
 		},
+		subtotalItem: {
+			name: "Subtotal",
+			price: 0.00, // Initialise price to 0.	
+		},
 		// Notifications array for #app notifications.
 		notifications: [],
 		// Cart array to store cart items.
@@ -1119,11 +1123,26 @@ Vue.component('product', {
 								<td>{{ (item.selectedQty * item.price).toFixed(2) }}</td>
 								<td><button @click="removeFromCart(index)">Remove</button></td>
 							</tr>
-							<!-- Add a space between cart items and extras -->
+							<!-- Add a space between cart items -->
 							<tr>
 								<td colspan="4"></td>
 								<td colspan="3"></td>
 							</tr>
+							<tr>
+								<td></td> <!-- No id for discount item -->
+								<td>{{ subtotalItem.name }}</td>
+								<td></td> <!-- No colour for discount item -->
+								<td></td> <!-- No size for discount item -->
+								<td></td> <!-- No quantity for discount item --> 
+								<td>{{ cartSubtotal }}</td> 
+								<td></td> <!-- Empty cell for Remove button -->
+							</tr>
+							<!-- Add a space between cart items -->
+							<tr>
+								<td colspan="4"></td>
+								<td colspan="3"></td>
+							</tr>
+							
 							<!-- Display the Premium Discount item row if the customer is premium -->
 							<tr v-if="premium">
 								<td>{{ premiumDiscountItem.id }}</td>
@@ -1143,7 +1162,7 @@ Vue.component('product', {
 								<td>{{ shippingItem.name }}</td>
 								<td></td> <!-- No colour for shipping item -->
 								<td></td> <!-- No size for shipping item -->
-								<td>{{ shippingItem.selectedQty }}</td>
+								<td></td>
 								<!-- Determine shipping costs based on item price total -->
 								<td>
 									<span v-if="totalCartValue < 50">{{ shippingItem.price.toFixed(2) }}</span>
@@ -1153,7 +1172,7 @@ Vue.component('product', {
 							</tr>
 							</tbody>
 						</table>
-					<p>Total: {{ cartGrandTotal }}</p> <!-- Use the computed property for grand total -->
+					<p>Total: &dollar;{{ cartGrandTotal }}</p> <!-- Use the computed property for grand total -->
 					<!-- Checkout button -->
 					<button @click="checkout" class="btn btn-success mx-auto d-block" v-if="cart.length > 0">Checkout</button>
 					<!-- Padding for line break effect -->
