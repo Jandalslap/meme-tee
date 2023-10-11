@@ -1020,7 +1020,7 @@ Vue.component('product', {
 						<div class="padding">
 						</div>
 						<!-- Div for product price -->
-						<p class="text-center" style="padding-top:5px;">Price: {{ product.price }}</p>
+						<p class="text-center" style="padding-top:5px;">Price: &dollar;{{ product.price }}</p>
 						<button @click="addToCart(product)" class="btn btn-success btn-primary mx-auto d-block" v-if="validateSelection(product)">Add to Cart</button>
 
 						<!-- Review Butttons - Use ternary operator to switch button text -->
