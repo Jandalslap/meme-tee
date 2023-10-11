@@ -11,7 +11,7 @@ const notificationApp = new Vue({
 	},
 	// Template Component.
 	template: `
-		<div>
+		<div class="text-center">
 			<div v-for="notification in notifications" :key="notification.id" class="notification">
 				{{ notification.message }}
 			</div>
