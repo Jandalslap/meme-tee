@@ -3,7 +3,7 @@
 // Global event bus.
 const eventBus = new Vue();
 
-// Create a Vue instance for notifications.
+// Create a new constant Vue instance for notifications.
 const notificationApp = new Vue({
 	// Data Component.
 	data: {
@@ -60,6 +60,10 @@ Vue.component('product', {
 		discounttext: {
 			type: String,
 			required: true,
+		},
+		shipping : {
+			type: Number,
+			required: true
 		}
 	},
 
@@ -79,15 +83,13 @@ Vue.component('product', {
 		showReviews: false, // Initial state is hidden.
 		// Premium discount item for cart.
 		premiumDiscountItem: {
-			id: "D",		
-			price: 0.00, // Initialise price to 0.		
+			id: "D",						
 		},
 		// Shipping item for cart.
 		shippingItem: {
 			id: "S",
 			name: "Shipping",
 			selectedQty: 1, // Default quantity for shipping
-			price: 9.95 // Shipping price
 		},
 		subtotalItem: {
 			name: "Subtotal",
@@ -1174,11 +1176,11 @@ Vue.component('product', {
 								<td>{{ shippingItem.name }}</td>
 								<td></td> <!-- No colour for shipping item -->
 								<td></td> <!-- No size for shipping item -->
-								<td></td>
+								<td></td> <!-- No qty for shipping item -->
 								<!-- Determine shipping costs based on item price total -->
 								<td style="text-align: right">
-									<span v-if="totalCartValue < 50">{{ shippingItem.price.toFixed(2) }}</span>
-									<span v-else style="text-decoration: line-through">{{ shippingItem.price.toFixed(2) }}</span>
+									<span v-if="totalCartValue < 50">{{ shipping }}</span>
+									<span v-else style="text-decoration: line-through">{{ shipping }}</span>
 								</td>
 								<td style="text-align: center"><button @click="clearCart">Clear Cart</button></td> <!-- Clear Cart button in the shipping row -->
 							</tr>
@@ -1514,14 +1516,14 @@ Vue.component('product', {
 		// Assign variable for discount subtraction.
 		let discountValue = this.cartSubtotal * this.discount;
 		// Apply the premium discount to the grand total if the user is a premium customer.
-		let grandTotal = this.premium ? (productTotal - discountValue) : productTotal;
+		let grandTotal = this.premium ? (productTotal - (discountValue).toFixed(2)) : productTotal;
 	
 		// Calculate the total including shipping if cart is not empty.
 		if (this.cartItemCount > 0) {
 			// Check if the total cart value is less than $50 using totalCartValue method value.
 			if (this.totalCartValue < 50) {
 			// Add the shipping charge.
-			grandTotal += this.shippingItem.selectedQty * this.shippingItem.price;
+			grandTotal += this.shipping;
 			}
 		}
 	
@@ -1531,7 +1533,7 @@ Vue.component('product', {
 	},
 });
 
-//Create a new vue instance called #app.
+//Create a new dynamic vue instance called #app.
 new Vue({
 	el: '#app',
 	data: {
@@ -1539,6 +1541,7 @@ new Vue({
 		premium: true, // Premium property. 
 		discount: 0.1, // Discount value.
 		discounttext: 'Premium Meme-ber Discount (10%)', // Discount text.
+		shipping: 9.95, // Shipping value.
 	}
 });
 
