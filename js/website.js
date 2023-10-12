@@ -930,6 +930,10 @@ Vue.component('product', {
 					<div v-for="product in products" :key="product.id" class="col-lg-4 col-md-6 col-sm-12">
 						<div class="product-card">
 							<h2 class="text-center mt-2">{{ product.name }}</h2>
+							<!-- Div for product price -->
+							<div>
+								<p class="text-center" style="padding-top:5px; font-weight: bold;">&dollar;{{ product.price }}</p>
+							</div>
 							<img :src="product.images[product.selectedColour][product.selectedSide]" alt="Product Image" class="img-fluid">
 							<!-- Div to change image based on colour choice -->
 							<div class="row d-flex justify-content-center">
@@ -1023,9 +1027,8 @@ Vue.component('product', {
 							<!-- Padding for line break effect -->
 							<div class="padding">
 							</div>
-							<!-- Div for product price -->
+							<!-- Add to cart button. Hidden unless valid selections made. -->
 							<div>
-								<p class="text-center" style="padding-top:5px; font-weight: bold;">Price: &dollar;{{ product.price }}</p>
 								<button @click="addToCart(product)" class="btn btn-success btn-primary mx-auto d-block" v-if="validateSelection(product)">Add to Cart</button>
 							</div>
 							<!-- Padding for line break effect -->
