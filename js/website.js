@@ -1470,12 +1470,7 @@ Vue.component('product', {
 				// Close the cart after a delay
 				setTimeout(() => {
 					this.showCart = false;
-				}, 3000); // Delay in milliseconds (3 seconds in this example)
-								
-				// Delay the page reload by a few seconds to allow the user to see the message.
-				setTimeout(() => {
-					window.location.reload();
-				}, 3000); // Delay in milliseconds (3 seconds in this example)			
+				}, 2000); // Delay in milliseconds (3 seconds in this example)									
 			}
 		},
 	},
