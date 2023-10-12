@@ -1060,13 +1060,13 @@ Vue.component('product', {
 							</div>
 							
 							<!-- Show Reviews Section -->
-							<div v-if="product.showReviews" class="reviews-section mt-2 text-center">
-								<h2>Reviews</h2>
+							<div v-if="product.showReviews" class="reviews-section mt-2 text-center">								
 								<!-- Display default message for no reviews else display reviews -->
 								<div v-if="product.reviews.length === 0">
 									<p>This product has not been reviewed yet.</p>
 								</div>
 								<div v-else>
+									<h2>Reviews</h2>
 									<div v-for="(review, index) in product.reviews" :key="index" class="review-box">
 										<p>
 											<strong>{{ review.name }} says:</strong>
