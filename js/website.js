@@ -945,7 +945,7 @@ Vue.component('product', {
 								<!-- Div to loop through product description array and list contents -->  
 								<div class="col-6">
 									<div class="product-card h-100">
-										<h6>Product Description</h6>
+										<h6>Description</h6>
 										<hr>
 										<!-- Padding for line break effect -->
 										<div class="padding">
