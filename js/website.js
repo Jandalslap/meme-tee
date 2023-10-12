@@ -934,7 +934,7 @@ Vue.component('product', {
 								<div style="position: relative;">
 									<img :src="product.images[product.selectedColour][product.selectedSide]" alt="Product Image" class="img-fluid">	
 									<!-- Buttons overlaid on the image -->
-									<button @click="changeImage(product, 'front')" class="btn btn-primary" style="position: absolute; top: 80%; left: 28%;">Front</button>
+									<button @click="changeImage(product, 'front')" class="btn btn-primary" style="position: absolute; top: 80%; left: 29%;">Front</button>
 									<button @click="changeImage(product, 'back')" class="btn btn-primary" style="position: absolute; top: 80%; left: 58%;">Back</button>
 								</div>
 							</div>							
@@ -1104,7 +1104,7 @@ Vue.component('product', {
 								<th>Colour</th>
 								<th>Size</th>
 								<th>Quantity</th>
-								<th>Price</th>
+								<th style="text-align: right">Price</th>
 								<th></th> <!-- Empty header for the Remove button -->
 							</tr>
 						</thead>
@@ -1116,8 +1116,8 @@ Vue.component('product', {
 								<td>{{ item.selectedColour }}</td>
 								<td>{{ item.selectedSize }}</td>
 								<td>{{ item.selectedQty }}</td>
-								<td>{{ (item.selectedQty * item.price).toFixed(2) }}</td>
-								<td><button @click="removeFromCart(index)">Remove</button></td>
+								<td style="text-align: right">{{ (item.selectedQty * item.price).toFixed(2) }}</td>
+								<td style="text-align: center"><button @click="removeFromCart(index)">Remove</button></td>
 							</tr>
 							<!-- Add a space between cart items -->
 							<tr>
@@ -1130,7 +1130,7 @@ Vue.component('product', {
 								<td></td> <!-- No colour for discount item -->
 								<td></td> <!-- No size for discount item -->
 								<td></td> <!-- No quantity for discount item --> 
-								<td>{{ cartSubtotal }}</td> 
+								<td style="text-align: right">{{ cartSubtotal }}</td> 
 								<td></td> <!-- Empty cell for Remove button -->
 							</tr>
 							<!-- Add a space between cart items -->
@@ -1144,10 +1144,10 @@ Vue.component('product', {
 								<td>{{ discounttext }}</td>
 								<td></td> <!-- No colour for discount item -->
 								<td></td> <!-- No size for discount item -->
-								<td></td> <!-- No quantity for discount item -->                          
-								<td>
-								<!-- Calculate the premium discount on the items in the table (excluding shipping) -->
-								-{{ (cartSubtotal * discount).toFixed(2) }}
+								<td></td> <!-- No quantity for discount item -->     
+								<!-- Calculate the premium discount on the items in the table (excluding shipping) -->                     
+								<td style="text-align: right">						
+									-{{ (cartSubtotal * discount).toFixed(2) }}
 								</td>
 								<td></td> <!-- Empty cell for Remove button -->
 							</tr>
@@ -1159,11 +1159,11 @@ Vue.component('product', {
 								<td></td> <!-- No size for shipping item -->
 								<td></td>
 								<!-- Determine shipping costs based on item price total -->
-								<td>
+								<td style="text-align: right">
 									<span v-if="totalCartValue < 50">{{ shippingItem.price.toFixed(2) }}</span>
 									<span v-else style="text-decoration: line-through">{{ shippingItem.price.toFixed(2) }}</span>
 								</td>
-								<td><button @click="clearCart">Clear Cart</button></td> <!-- Clear Cart button in the shipping row -->
+								<td style="text-align: center"><button @click="clearCart">Clear Cart</button></td> <!-- Clear Cart button in the shipping row -->
 							</tr>
 							</tbody>
 						</table>
@@ -1361,6 +1361,9 @@ Vue.component('product', {
 					'success',
 					2000 // Duration in milliseconds (2 seconds in this example)
 				);
+				// Reset quantity value to Qty.
+        		product.selectedQty = 'Qty';
+
 			} else {
 				alert('Please select colour, size, and quantity before adding to cart.');
 			}

@@ -303,10 +303,6 @@ p a{
         margin-top: 3px;
     }
 
-    .cart-popup {
-        padding: 20px; /* Add more padding for better spacing on mobile */
-    }
-
     table {
         width: 100%; /* Make the table take the full width of the container */
     }
@@ -314,11 +310,6 @@ p a{
     th, td {
         padding: 5px; /* Add padding to table cells for better spacing */
         font-size: 9px; /* Adjust font size as needed for mobile */
-    }
-
-    /* Center align table text on mobile (optional) */
-    td {
-        text-align: center;
     }
     
 }
