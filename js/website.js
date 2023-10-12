@@ -935,14 +935,14 @@ Vue.component('product', {
 								<p class="text-center" style="padding-top:5px; font-weight: bold;">&dollar;{{ product.price }}</p>
 							</div>
 							<img :src="product.images[product.selectedColour][product.selectedSide]" alt="Product Image" class="img-fluid">
-							<!-- Div to change image based on colour choice -->
+							<!-- Div to change image and button colour based on product colour choice -->
 							<div class="row d-flex justify-content-center">
-								<div class="col-3 text-right">
-									<button @click="changeImage(product, 'front')" class="btn btn-secondary">Front</button>
-								</div>
-								<div class="col-3 text-left">
-									<button @click="changeImage(product, 'back')" class="btn btn-secondary" style="padding-left: 14px; padding-right: 14px;">Back</button>
-								</div>
+							<div class="col-3 text-right">
+								<button @click="changeImage(product, 'front', $event)" class="btn" :class="{ 'btn-secondary': product.selectedSide !== 'front', 'btn-primary': product.selectedSide === 'front' }">Front</button>
+							</div>
+							<div class="col-3 text-left">
+								<button @click="changeImage(product, 'back', $event)" class="btn" :class="{ 'btn-secondary': product.selectedSide !== 'back', 'btn-primary': product.selectedSide === 'back' }" style="padding-left: 14px; padding-right: 14px;">Back</button>
+							</div>
 							</div>
 							</div>							
 							<div class="row">  					
@@ -961,7 +961,7 @@ Vue.component('product', {
 								</div>							
 								<div class ="col-6">  
 									<div class="product-card h-100">
-									<h6>Order Form</h6>
+									<h6>Select</h6>
 										<hr>
 										<!-- Div for product colour selection -->
 										<div class="row">
@@ -1038,14 +1038,22 @@ Vue.component('product', {
 							<div>
 								<button @click="toggleCart" class="btn btn-primary mx-auto d-block" v-if="cartItemCount > 0">View Cart</button>
 							</div>
-							<!-- Review Butttons - Use ternary operator to switch button text -->
-							<div class="text-center mt-2">
-								<button @click="toggleAddReviewForm(product)" class="btn btn-warning">
-									{{ product.showReviewForm ? 'Cancel Review' : 'Add Review' }}
-								</button>
-								<button @click="toggleShowReviews(product)" class="btn btn-warning">
-									{{ product.showReviews ? 'Close Reviews' : 'Show Reviews' }}
-								</button>
+							<!-- Review Butttons - Use ternary operator to switch button text and class binding to change colour -->
+							<div class="row">
+								<div class="col-6">
+									<div class="text-center mt-2">
+										<button @click="toggleShowReviews(product)" class="btn" :class="{ 'btn-secondary': product.showReviews, 'btn-warning': !product.showReviews }">
+											{{ product.showReviews ? 'Close Reviews' : 'Show Reviews' }}
+										</button>
+									</div>
+								</div>
+								<div class="col-6">
+									<div class="text-center mt-2">
+										<button @click="toggleAddReviewForm(product)" class="btn" :class="{ 'btn-secondary': product.showReviewForm, 'btn-warning': !product.showReviewForm }">
+											{{ product.showReviewForm ? 'Cancel Review' : 'Add Review' }}
+										</button>
+									</div>
+								</div>								
 							</div>
 							
 							<!-- Add Review Form -->
@@ -1392,9 +1400,10 @@ Vue.component('product', {
 		},
 
 		// Method to update product image with the selected side.
-		changeImage(product, side) {
-			product.selectedSide = side;
-		},
+		changeImage(product, side, event) {
+            // Update the selected side
+            product.selectedSide = side;
+        },
 
 		// Method to toggle the visibility of the cart.
 		displayCart() {
