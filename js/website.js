@@ -930,13 +930,16 @@ Vue.component('product', {
 					<div v-for="product in products" :key="product.id" class="col-lg-4 col-md-6 col-sm-12">
 						<div class="product-card">
 							<h2 class="text-center mt-2">{{ product.name }}</h2>
-								<!-- Buttons placed at the bottom of the image -->
-								<div style="position: relative;">
-									<img :src="product.images[product.selectedColour][product.selectedSide]" alt="Product Image" class="img-fluid">	
-									<!-- Buttons overlaid on the image -->
-									<button @click="changeImage(product, 'front')" class="btn btn-primary" style="position: absolute; top: 80%; left: 29%;">Front</button>
-									<button @click="changeImage(product, 'back')" class="btn btn-primary" style="position: absolute; top: 80%; left: 58%;">Back</button>
+							<img :src="product.images[product.selectedColour][product.selectedSide]" alt="Product Image" class="img-fluid">
+							<!-- Div to change image based on colour choice -->
+							<div class="row d-flex justify-content-center">
+								<div class="col-3 text-right">
+									<button @click="changeImage(product, 'front')" class="btn btn-primary">Front</button>
 								</div>
+								<div class="col-3 text-left">
+									<button @click="changeImage(product, 'back')" class="btn btn-primary" style="padding-left: 14px; padding-right: 14px;">Back</button>
+								</div>
+							</div>
 							</div>							
 							<div class="row">  					
 								<!-- Div to loop through product description array and list contents -->  
@@ -1021,19 +1024,18 @@ Vue.component('product', {
 							<div class="padding">
 							</div>
 							<!-- Div for product price -->
-							<p class="text-center" style="padding-top:5px;">Price: &dollar;{{ product.price }}</p>
+							<p class="text-center" style="padding-top:5px; font-weight: bold;">Price: &dollar;{{ product.price }}</p>
 							<button @click="addToCart(product)" class="btn btn-success btn-primary mx-auto d-block" v-if="validateSelection(product)">Add to Cart</button>
 
 							<!-- Review Butttons - Use ternary operator to switch button text -->
-							<div class="text-center mt-3">
-								<div>
-									<button @click="toggleAddReviewForm(product)" class="btn btn-primary">
-										{{ product.showReviewForm ? 'Cancel Review' : 'Add Review' }}
-									</button>
-									<button @click="toggleShowReviews(product)" class="btn btn-primary">
-										{{ product.showReviews ? 'Close Reviews' : 'Show Reviews' }}
-									</button>
-								</div>
+							<!-- Review Butttons - Use ternary operator to switch button text -->
+							<div class="text-center mt-2">
+								<button @click="toggleAddReviewForm(product)" class="btn btn-primary">
+									{{ product.showReviewForm ? 'Cancel Review' : 'Add Review' }}
+								</button>
+								<button @click="toggleShowReviews(product)" class="btn btn-primary">
+									{{ product.showReviews ? 'Close Reviews' : 'Show Reviews' }}
+								</button>
 							</div>
 							
 							<!-- Add Review Form -->
