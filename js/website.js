@@ -934,10 +934,10 @@ Vue.component('product', {
 							<!-- Div to change image based on colour choice -->
 							<div class="row d-flex justify-content-center">
 								<div class="col-3 text-right">
-									<button @click="changeImage(product, 'front')" class="btn btn-primary">Front</button>
+									<button @click="changeImage(product, 'front')" class="btn btn-secondary">Front</button>
 								</div>
 								<div class="col-3 text-left">
-									<button @click="changeImage(product, 'back')" class="btn btn-primary" style="padding-left: 14px; padding-right: 14px;">Back</button>
+									<button @click="changeImage(product, 'back')" class="btn btn-secondary" style="padding-left: 14px; padding-right: 14px;">Back</button>
 								</div>
 							</div>
 							</div>							
@@ -1024,16 +1024,23 @@ Vue.component('product', {
 							<div class="padding">
 							</div>
 							<!-- Div for product price -->
-							<p class="text-center" style="padding-top:5px; font-weight: bold;">Price: &dollar;{{ product.price }}</p>
-							<button @click="addToCart(product)" class="btn btn-success btn-primary mx-auto d-block" v-if="validateSelection(product)">Add to Cart</button>
-
-							<!-- Review Butttons - Use ternary operator to switch button text -->
+							<div>
+								<p class="text-center" style="padding-top:5px; font-weight: bold;">Price: &dollar;{{ product.price }}</p>
+								<button @click="addToCart(product)" class="btn btn-success btn-primary mx-auto d-block" v-if="validateSelection(product)">Add to Cart</button>
+							</div>
+							<!-- Padding for line break effect -->
+							<div class="padding">
+							</div>
+							<!-- Div for view cart button -->
+							<div>
+								<button @click="toggleCart" class="btn btn-primary mx-auto d-block" v-if="cartItemCount > 0">View Cart</button>
+							</div>
 							<!-- Review Butttons - Use ternary operator to switch button text -->
 							<div class="text-center mt-2">
-								<button @click="toggleAddReviewForm(product)" class="btn btn-primary">
+								<button @click="toggleAddReviewForm(product)" class="btn btn-warning">
 									{{ product.showReviewForm ? 'Cancel Review' : 'Add Review' }}
 								</button>
-								<button @click="toggleShowReviews(product)" class="btn btn-primary">
+								<button @click="toggleShowReviews(product)" class="btn btn-warning">
 									{{ product.showReviews ? 'Close Reviews' : 'Show Reviews' }}
 								</button>
 							</div>
@@ -1089,9 +1096,6 @@ Vue.component('product', {
 					</div>
 				</div>
 				<!-- End Product component template -->
-
-				<!-- Toggle View Cart Button -->
-				<button @click="toggleCart" class="btn btn-primary mx-auto d-block">View Cart</button>   
 
 				<!-- Shopping Cart Pop-up -->
 				<div v-if="showCart" class="cart-popup">
