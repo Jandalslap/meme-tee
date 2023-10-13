@@ -1539,7 +1539,7 @@ new Vue({
 	data: {
 		// Change properties as required.
 		premium: true, // Premium property. 
-		discount: 0.1, // Discount value.
+		discount: 0.1, // Discount value. Change discounttext with value.
 		discounttext: 'Premium Meme-ber Discount (10%)', // Discount text for cart and webpage.
 		shipping: 9.95, // Shipping value.
 	}
