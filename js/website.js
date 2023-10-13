@@ -1189,8 +1189,13 @@ Vue.component('product', {
 							<!-- Display the Shipping item -->
 							<tr v-if="cart.length > 0">
 								<td>{{ shippingItem.id }}</td>
-								<td v-if="freeshippingoffer && totalCartValue < freeshippingvalue">{{ shippingItem.name }}</td>
-								<td v-else-if="freeshippingoffer && totalCartValue >= freeshippingvalue">Free Shipping</td>
+								<td v-if="freeshippingoffer"> 
+									<span v-if="totalCartValue < freeshippingvalue">{{ shippingItem.name }}</span>
+									<span v-else>Free Shipping</span>
+								</td>
+								<td v-else>
+									<span>{{ shippingItem.name }}</span>
+								</td>
 								<td v-else>{{ shippingItem.name }}</td>
 								<td></td> <!-- No colour for shipping item -->
 								<td></td> <!-- No size for shipping item -->
