@@ -913,7 +913,7 @@ Vue.component('product', {
 				<!-- Display message for premium/non-premium members -->
 				<div class="text-center">
 					<div v-if="premium">
-						<p>You are a premium meme-ber. Enjoy 10% off your items!</p>
+						<p>Enjoy Your {{ discounttext }} Off Items!</p>
 					</div>
 					<div v-else>
 						<p>Upgrade to premium for exclusive benefits!</p>
@@ -1540,7 +1540,7 @@ new Vue({
 		// Change properties as required.
 		premium: true, // Premium property. 
 		discount: 0.1, // Discount value.
-		discounttext: 'Premium Meme-ber Discount (10%)', // Discount text.
+		discounttext: 'Premium Meme-ber Discount (10%)', // Discount text for cart and webpage.
 		shipping: 9.95, // Shipping value.
 	}
 });
