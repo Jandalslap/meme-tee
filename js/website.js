@@ -1052,7 +1052,7 @@ Vue.component('product', {
 								<div class="col-6">
 									<div class="text-center mt-2">
 										<button @click="toggleAddReviewForm(product)" class="btn" :class="{ 'btn-secondary': product.showReviewForm, 'btn-warning': !product.showReviewForm }">
-											{{ product.showReviewForm ? 'Cancel Review' : 'Add Review' }}
+											{{ product.showReviewForm ? 'Cancel Review' : 'Add a Review' }}
 										</button>
 									</div>
 								</div>								
