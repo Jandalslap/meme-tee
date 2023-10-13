@@ -45,6 +45,7 @@ const notificationApp = new Vue({
 // Mount the notifications Vue instance.
 notificationApp.$mount('#notification-app');
 
+
 // Create a Vue Component called product.
 Vue.component('product', {
 	// Properties Component.
@@ -61,9 +62,17 @@ Vue.component('product', {
 			type: String,
 			required: true,
 		},
-		shipping : {
+		shipping: {
 			type: Number,
 			required: true
+		},
+		freeshippingoffer: {
+			type: Boolean,
+			required: true,
+		},
+		freeshippingvalue: {
+			type: Number,
+			required: true,
 		}
 	},
 
@@ -75,9 +84,10 @@ Vue.component('product', {
 		}
 	},
 
-	// Data Component.
+	// Data Component. Only static properties that remain the same for each customer go here.
 	data() {
 		return {
+		
 		selectedRating: 0, // Initialize to 0 for no rating.
 		reviewsVisible: false, // Initial state is hidden.
 		showReviews: false, // Initial state is hidden.
@@ -910,6 +920,12 @@ Vue.component('product', {
 	template: `
 		<div>
 			<div>
+				<!-- Ad Banner -->
+				<div class="banner">
+					<div v-if="freeshippingoffer">
+						<p>Free Shipping when you spend &dollar;{{ freeshippingvalue }} or more!</p>
+					</div>
+				</div>
 				<!-- Display message for premium/non-premium members -->
 				<div class="text-center">
 					<div v-if="premium">
@@ -1173,14 +1189,20 @@ Vue.component('product', {
 							<!-- Display the Shipping item -->
 							<tr v-if="cart.length > 0">
 								<td>{{ shippingItem.id }}</td>
-								<td>{{ shippingItem.name }}</td>
+								<td v-if="freeshippingoffer && totalCartValue < freeshippingvalue">{{ shippingItem.name }}</td>
+								<td v-else-if="freeshippingoffer && totalCartValue >= freeshippingvalue">Free Shipping</td>
+								<td v-else>{{ shippingItem.name }}</td>
 								<td></td> <!-- No colour for shipping item -->
 								<td></td> <!-- No size for shipping item -->
 								<td></td> <!-- No qty for shipping item -->
 								<!-- Determine shipping costs based on item price total -->
-								<td style="text-align: right">
-									<span v-if="totalCartValue < 50">{{ shipping }}</span>
+								<td v-if="freeshippingoffer" style="text-align: right">
+									<span v-if="totalCartValue < freeshippingvalue">{{ shipping }}</span>
 									<span v-else style="text-decoration: line-through">{{ shipping }}</span>
+								</td>
+								<td v-else style="text-align: right">
+									<span>{{ shipping }}</span>
+									
 								</td>
 								<td style="text-align: center"><button @click="clearCart">Clear Cart</button></td> <!-- Clear Cart button in the shipping row -->
 							</tr>
@@ -1520,8 +1542,8 @@ Vue.component('product', {
 	
 		// Calculate the total including shipping if cart is not empty.
 		if (this.cartItemCount > 0) {
-			// Check if the total cart value is less than $50 using totalCartValue method value.
-			if (this.totalCartValue < 50) {
+			// Check if the total cart value is less than freeshippingvalue using totalCartValue method value.
+			if (this.totalCartValue < this.freeshippingvalue) {
 			// Add the shipping charge.
 			grandTotal += this.shipping;
 			}
@@ -1533,14 +1555,16 @@ Vue.component('product', {
 	},
 });
 
-//Create a new dynamic vue instance called #app.
+// Create a new dynamic vue instance called #app. Only dynamic properties specific to each user login go here.
 new Vue({
 	el: '#app',
 	data: {
 		// Change properties as required.
-		premium: true, // Premium property. 
-		discount: 0.1, // Discount value. Change discounttext with value.
-		discounttext: 'Premium Meme-ber Discount (10%)', // Discount text for cart and webpage.
+		premium: true, // Toggle premium customer.
+		discount: 0.1, // Discount value. Change discounttext % with value.
+		discounttext: 'Premium Meme-ber Discount (10%)', // Discount text for cart and webpage ad.
+		freeshippingoffer: true, // Toggle free shipping offer.
+		freeshippingvalue: 50, // Changes calculations and ad banner text.
 		shipping: 9.95, // Shipping value.
 	}
 });

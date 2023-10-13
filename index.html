@@ -76,11 +76,6 @@
         <div class="padding">
         </div>
 
-        <!-- Ad Banner -->
-        <div class="banner">
-            <p>Free Shipping when you spend $50 or more!</p>
-        </div>
-
         <!-- The div element to render Vue screen notifications -->
         <div id="notification-app">
         </div>
@@ -88,7 +83,7 @@
         <!-- The div element to render Vue app instance -->
         <div id="app">
             <!-- Bind premium property to the product component -->
-            <product :premium="premium" :discount="discount" :discounttext="discounttext" :shipping="shipping"></product>	
+            <product :premium="premium" :discount="discount" :discounttext="discounttext" :shipping="shipping" :freeshippingoffer="freeshippingoffer" :freeshippingvalue="freeshippingvalue"></product>	
         </div>
       
         <!-- Padding for line break effect -->
