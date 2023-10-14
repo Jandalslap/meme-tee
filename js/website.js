@@ -1390,11 +1390,10 @@ Vue.component('product', {
 					selectedProduct.stockOnHand[product.selectedColour][product.selectedSize] -= parseInt(
 						product.selectedQty
 					);
-				}
-				
+				}			
 
-				// Emit a custom event to the event bus and addToCart method.
-				eventBus.$emit('addToCart', product);
+				// Emit a custom event to the event bus. Used to notify other parts of the application when an item is added to the cart. 
+				eventBus.$emit('addToCart', product); // Good practice but not used in this assignment.
 		
 				// Increment the cart item count by the selected quantity.
 				this.cartItemCount += parseInt(product.selectedQty);
