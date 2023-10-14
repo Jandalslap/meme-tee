@@ -78,16 +78,20 @@ Vue.component('product', {
 
 	// Watch Component.
 	watch: {
+		// Watch for changes in product.selectedColour and update image.
 		'product.selectedColour': function (newColour, oldColour) {
 		  // When the colour is selected the product image is updated.
 		  this.product.image = this.product.images[newColour];
-		}
+		},
+		// Watch for changes in updatedShippingQty and update shippingItem.selectedQty.
+		updatedShippingQty(newQty) {
+			this.shippingItem.selectedQty = newQty;
+		},
 	},
 
 	// Data Component. Only static properties that remain the same for each customer go here.
 	data() {
-		return {
-		
+		return {	
 		selectedRating: 0, // Initialize to 0 for no rating.
 		reviewsVisible: false, // Initial state is hidden.
 		showReviews: false, // Initial state is hidden.
@@ -99,7 +103,7 @@ Vue.component('product', {
 		shippingItem: {
 			id: "S",
 			name: "Shipping",
-			selectedQty: 1, // Default quantity for shipping
+			selectedQty: 1, // Initialise.
 		},
 		subtotalItem: {
 			name: "Subtotal",
@@ -1202,11 +1206,11 @@ Vue.component('product', {
 								<td></td> <!-- No qty for shipping item -->
 								<!-- Determine shipping costs based on item price total -->
 								<td v-if="freeshippingoffer" style="text-align: right">
-									<span v-if="totalCartValue < freeshippingvalue">{{ shipping }}</span>
-									<span v-else style="text-decoration: line-through">{{ shipping }}</span>
+									<span v-if="totalCartValue < freeshippingvalue">{{ (shipping * shippingItem.selectedQty).toFixed(2) }}</span>
+									<span v-else style="text-decoration: line-through">{{ (shipping * shippingItem.selectedQty).toFixed(2) }}</span>
 								</td>
 								<td v-else style="text-align: right">
-									<span>{{ shipping }}</span>
+									<span>{{ (shipping * shippingItem.selectedQty).toFixed(2) }}</span>
 									
 								</td>
 								<td style="text-align: center"><button @click="clearCart">Clear Cart</button></td> <!-- Clear Cart button in the shipping row -->
@@ -1506,6 +1510,11 @@ Vue.component('product', {
 
 	// Computed Component.
 	computed: {	
+		// Method to calculate shipping item qty based off cart count.
+		updatedShippingQty() {
+			// Calculate the new shippintItem.selectedQty based on cartItemCount.
+			return Math.ceil(this.cartItemCount / 5); // Math.ceil rounds number up to the nearest whole number. 1 shipping unit for every 5 items.
+		},
 		// Method to toggle reviews button text using ternary operator.
 		showReviewsButtonText() {
 			return this.reviewsVisible ? 'Close Reviews' : 'Show Reviews';
@@ -1550,7 +1559,7 @@ Vue.component('product', {
 			// Check if the total cart value is less than freeshippingvalue using totalCartValue method value.
 			if (this.totalCartValue < this.freeshippingvalue) {
 			// Add the shipping charge.
-			grandTotal += this.shipping;
+			grandTotal += this.shipping.toFixed(2) * this.shippingItem.selectedQty;
 			}
 		}
 	
@@ -1569,7 +1578,7 @@ new Vue({
 		discount: 0.1, // Discount value. Change discounttext % with value.
 		discounttext: 'Premium Meme-ber Discount (10%)', // Discount text for cart and webpage ad.
 		freeshippingoffer: true, // Toggle free shipping offer.
-		freeshippingvalue: 50, // Changes calculations and ad banner text.
+		freeshippingvalue: 50, // Changes calculation for free shipping offer and ad banner text.
 		shipping: 9.95, // Shipping value.
 	}
 });
