@@ -284,6 +284,15 @@ p a{
     color: #ffac42; /* Colour of filled stars */
 }
 
+/* Add margin and style to the Sign In button */
+#signInButton {
+    
+    background-color: #000000; /* Button background color */
+    color: #FFFFFF; /* Button text color */
+    border: none;
+    cursor: pointer;
+}
+
 
 /* Shopping cart styles for mobile devices */
 @media (max-width: 992px) {

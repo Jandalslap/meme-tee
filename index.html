@@ -35,53 +35,60 @@
 
     </head>
     <body>
-        <!-- Navigation bar start -->
-        <nav id="top" class="navbar navbar-dark navbar-expand-lg" style="background-color: #000000; padding-top: 30px; padding-bottom: 15px;">
-
-            <!-- Hamburger menu for responsive design -->
-            <button class="navbar-toggler mx-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <!-- Removed links for other pages -->
-            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <p class="nav-link" style="color: #FFFFFF;" href="">Home</p>
-                    </li>
-                    <li class="nav-item active"> <!-- Note: 'active' menu page -->
-                        <a class="nav-link" style="color: #FFFFFF; padding-bottom: 20px;" href="index.html">Products</a>
-                    </li>
-                    <li class="nav-item">
-                        <p class="nav-link" style="color: #FFFFFF;" href="">About Us</p>
-                    </li>
-                    <li class="nav-item">
-                        <p class="nav-link" style="color: #FFFFFF;" href="">Contact</p>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-        <!-- Navigation bar end -->
-
-        <!-- Page Heading -->
-        <h1 class="page-heading">
-            <!-- Meme-Tee Logo -->
-            <a class="navbar-brand" href="index.html"> <!-- Link inactive -->
-                <img src="images/meme-tee.jpg" alt="Meme-Tee Logo" width="75" height="75">
-            </a>
-            <span class="red-text">Celebrity</span>
-            <span class="black-text">Meme-</span><span class="blue-text">Tee</span>           
-        </h1>
-
-        <!-- Padding for line break effect -->
-        <div class="padding">
-        </div>
-
         <!-- The div element to render Vue screen notifications -->
         <div id="notification-app">
         </div>
-
         <!-- The div element to render Vue app instance -->
         <div id="app">
+            <!-- Navigation bar start -->
+            <nav id="top" class="navbar navbar-dark navbar-expand-lg" style="background-color: #000000; padding-top: 30px; padding-bottom: 15px;">
+
+                <!-- Hamburger menu for responsive design -->
+                <button class="navbar-toggler mx-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <!-- Removed links for other pages -->
+                <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <p class="nav-link" style="color: #FFFFFF;" href="">Home</p>
+                        </li>
+                        <li class="nav-item active"> <!-- Note: 'active' menu page -->
+                            <a class="nav-link" style="color: #FFFFFF; padding-bottom: 20px;" href="index.html">Products</a>
+                        </li>
+                        <li class="nav-item">
+                            <p class="nav-link" style="color: #FFFFFF;" href="">About Us</p>
+                        </li>
+                        <li class="nav-item">
+                            <p class="nav-link" style="color: #FFFFFF;" href="">Contact</p>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="signInButton" @click="signIn">{{ buttonText }}</a>
+                        </li>
+                    </ul>
+                </div>
+                
+            </nav>
+            <!-- Navigation bar end -->
+
+            <!-- Page Heading -->
+            <h1 class="page-heading">
+                <!-- Meme-Tee Logo -->
+                <a class="navbar-brand" href="index.html"> <!-- Link inactive -->
+                    <img src="images/meme-tee.jpg" alt="Meme-Tee Logo" width="75" height="75">
+                </a>
+                <span class="red-text">Celebrity</span>
+                <span class="black-text">Meme-</span><span class="blue-text">Tee</span>           
+            </h1>
+
+            <!-- Padding for line break effect -->
+            <div class="padding">
+            </div>
+
+            
+
+
+
             <!-- Bind premium property to the product component -->
             <product :premium="premium" :discount="discount" :freeshippingoffer="freeshippingoffer" :freeshippingvalue="freeshippingvalue"></product>	
         </div>

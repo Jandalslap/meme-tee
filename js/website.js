@@ -84,7 +84,7 @@ Vue.component('product', {
 	// Data Component. Only static properties that remain the same for each customer go here.
 	data() {
 		return {	
-		selectedRating: 0, // Initialize to 0 for no rating.
+		selectedRating: 0, // Initialise to 0 for no rating.
 		reviewsVisible: false, // Initial state is hidden.
 		showReviews: false, // Initial state is hidden.
 		discountText: 'Premium Meme-ber Discount', // Discount text for cart and webpage ad.
@@ -109,7 +109,7 @@ Vue.component('product', {
 		// Cart array to store cart items.
 		cart: [],
     	showCart: false, // Initial state is hidden.
-		cartItemCount: 0, // Initialize cart item count.
+		cartItemCount: 0, // Initialise cart item count.
 		// Products array.
 		products: [
 		{
@@ -917,7 +917,7 @@ Vue.component('product', {
 	// Template Component.
 	template: `
 		<div>
-			<div>
+			<div>		
 				<!-- Ad Banner -->
 				<div class="banner">
 					<div v-if="freeshippingoffer">
@@ -1328,7 +1328,7 @@ Vue.component('product', {
 				notificationApp.addNotification(
 					`Your review for ${product.name} Meme-Tee has been submitted.`,
 					'success',
-					2000 // Duration in milliseconds (2 seconds in this example)
+					2000 // Duration in milliseconds.
 				);
 
 			} else {
@@ -1402,7 +1402,7 @@ Vue.component('product', {
 				notificationApp.addNotification(
 					`${product.name} Meme-Tee has been added to the cart.`,
 					'success',
-					2000 // Duration in milliseconds (2 seconds in this example)
+					2000 // Duration in milliseconds.
 				);
 				// Reset quantity value to Qty.
         		product.selectedQty = 'Qty';
@@ -1490,13 +1490,13 @@ Vue.component('product', {
 				notificationApp.addNotification(
 					'Thank you for shopping with us!',
 					'success',
-					2000 // Duration in milliseconds (2 seconds in this example)
+					2000 // Duration in milliseconds.
 				);
 		
 				// Close the cart after a delay
 				setTimeout(() => {
 					this.showCart = false;
-				}, 2000); // Delay in milliseconds (3 seconds in this example)									
+				}, 2000); // Delay in milliseconds.									
 			}
 		},
 	},
@@ -1565,13 +1565,43 @@ Vue.component('product', {
 // Create a new dynamic vue instance called #app. Only dynamic properties specific to each user login go here.
 new Vue({
 	el: '#app',
+	// Instance Data Ccomponent.
 	data: {
 		// Change properties as required.
-		premium: true, // Toggle premium customer.
+		premium: false, // Toggle premium customer.
 		discount: 0.1, // Discount value changes calculation and discount text in ad and cart.
 		freeshippingoffer: true, // Toggle free shipping offer.
 		freeshippingvalue: 50, // Changes calculation for free shipping offer and ad banner text.
+		buttonText: 'Sign In', // Initialise the Sign In button text.
+	},
+	// Instance Method Component.
+	methods: {
+		// Method to set specific user data properties on sign in and display a notification.
+		signIn: function () {
+			if (this.premium) {
+				// If premium, set to non-premium state (Sign In)
+				this.premium = false;
+				this.freeshippingvalue = 50;
+				this.buttonText = 'Sign In'; // Set the button text
+				notificationApp.addNotification(
+					'You have signed out. See you next time!',
+					'info',
+					3000 // Duration in milliseconds.
+				);
+			} else {
+				// If not premium, set to premium state (Sign Out)
+				this.premium = true;
+				this.freeshippingvalue = 30;
+				this.buttonText = 'Sign Out'; // Set the button text
+				notificationApp.addNotification(
+					'Welcome back! Congratulations on being a premium meme-ber.',
+					'success',
+					3000 // Duration in milliseconds.
+				);
+			}
+		}
 	}
 });
+
 
 
