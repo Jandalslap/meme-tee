@@ -286,11 +286,16 @@ p a{
 
 /* Add margin and style to the Sign In button */
 #signInButton {
-    
     background-color: #000000; /* Button background color */
-    color: #FFFFFF; /* Button text color */
-    border: none;
+    border: 2px solid #FFFFFF; /* Add a white border around the button */
+    border-radius: 10px; /* Adjust the border-radius to control the roundness of edges */
+    padding: 3px 5px 5px 5px; /* Top padding: 5px, Right padding: 20px, Bottom padding: 10px, Left padding: 20px */
     cursor: pointer;
+    display: inline-block; /* Ensure it's a block-level element */
+    text-align: center; /* Center the text horizontally */
+    text-decoration: none; /* Remove the default underline from links */
+    color: #FFFFFF; /* Text color */
+    line-height: 33px; /* Adjust the line-height to vertically center the text */
 }
 
 
