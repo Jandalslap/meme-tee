@@ -1569,7 +1569,7 @@ new Vue({
 	data: {
 		// Change properties as required.
 		premium: true, // Toggle premium customer.
-		discount: 0.5, // Discount value changes calculation and discount text in ad and cart.
+		discount: 0.1, // Discount value changes calculation and discount text in ad and cart.
 		freeshippingoffer: true, // Toggle free shipping offer.
 		freeshippingvalue: 50, // Changes calculation for free shipping offer and ad banner text.
 	}
