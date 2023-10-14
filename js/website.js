@@ -58,14 +58,6 @@ Vue.component('product', {
 			type: Number,
 			required: true
 		},
-		discounttext: {
-			type: String,
-			required: true,
-		},
-		shipping: {
-			type: Number,
-			required: true
-		},
 		freeshippingoffer: {
 			type: Boolean,
 			required: true,
@@ -95,15 +87,18 @@ Vue.component('product', {
 		selectedRating: 0, // Initialize to 0 for no rating.
 		reviewsVisible: false, // Initial state is hidden.
 		showReviews: false, // Initial state is hidden.
+		discountText: 'Premium Meme-ber Discount', // Discount text for cart and webpage ad.
+		discountPercentage: (this.discount * 100).toFixed(), // Discount percentage in text format. USed with discountText.
 		// Premium discount item for cart.
 		premiumDiscountItem: {
 			id: "D",						
 		},
+		shipping: 9.95, // Shipping value.
 		// Shipping item for cart.
 		shippingItem: {
 			id: "S",
 			name: "Shipping",
-			selectedQty: 1, // Initialise.
+			selectedQty: 1, // Initialise to default 1. Used to determine how many shipping charges to apply based on cartItemCount using computed updatedShippingQty.
 		},
 		subtotalItem: {
 			name: "Subtotal",
@@ -115,7 +110,6 @@ Vue.component('product', {
 		cart: [],
     	showCart: false, // Initial state is hidden.
 		cartItemCount: 0, // Initialize cart item count.
-
 		// Products array.
 		products: [
 		{
@@ -179,7 +173,7 @@ Vue.component('product', {
 				},
 			},
 			description: 'Unisex, 80% cotton, 20% polyester',
-			price: 19.95,
+			price: 19.95, // Price value.
 			selectedColour: 'white', // Initial colour. Initialise for deault image.
 			selectedSide: 'front', // Initial side.
 			selectedSize: 'Size', // Display value string 'Size'.
@@ -933,7 +927,7 @@ Vue.component('product', {
 				<!-- Display message for premium/non-premium members -->
 				<div class="text-center">
 					<div v-if="premium">
-						<p>Enjoy Your {{ discounttext }} Off Items!</p>
+						<p>Enjoy Your {{ discountText }} ({{ discountPercentage }}%) Off Items!</p>
 					</div>
 					<div v-else>
 						<p>Upgrade to premium for exclusive benefits!</p>
@@ -1180,7 +1174,7 @@ Vue.component('product', {
 							<!-- Display the Premium Discount item row if the customer is premium -->
 							<tr v-if="premium">
 								<td>{{ premiumDiscountItem.id }}</td>
-								<td>{{ discounttext }}</td>
+								<td>{{ discountText }} ({{ discountPercentage }}%)</td>
 								<td></td> <!-- No colour for discount item -->
 								<td></td> <!-- No size for discount item -->
 								<td></td> <!-- No quantity for discount item -->     
@@ -1575,11 +1569,9 @@ new Vue({
 	data: {
 		// Change properties as required.
 		premium: true, // Toggle premium customer.
-		discount: 0.1, // Discount value. Change discounttext % with value.
-		discounttext: 'Premium Meme-ber Discount (10%)', // Discount text for cart and webpage ad.
+		discount: 0.5, // Discount value changes calculation and discount text in ad and cart.
 		freeshippingoffer: true, // Toggle free shipping offer.
 		freeshippingvalue: 50, // Changes calculation for free shipping offer and ad banner text.
-		shipping: 9.95, // Shipping value.
 	}
 });
 
