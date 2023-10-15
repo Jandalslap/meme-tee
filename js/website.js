@@ -87,8 +87,7 @@ Vue.component('product', {
 		selectedRating: 0, // Initialise to 0 for no rating.
 		reviewsVisible: false, // Initial state is hidden.
 		showReviews: false, // Initial state is hidden.
-		discountText: 'Premium Meme-ber Discount', // Discount text for cart and webpage ad.
-		discountPercentage: (this.discount * 100).toFixed(), // Discount percentage in text format. USed with discountText.
+		discountText: 'Premium Meme-ber Discount', // Discount text for cart and webpage ad. Used with computed discountPercentage() for discount text %.
 		// Premium discount item for cart.
 		premiumDiscountItem: {
 			id: "D",						
@@ -948,8 +947,9 @@ Vue.component('product', {
 							<h2 class="text-center mt-2">{{ product.name }}</h2>
 							<!-- Div for product price. If customer is premium, product procing is shown as discounted on product cards -->
 							<div v-if="premium">
-								<p class="text-center" style="font-size: 18px; padding-top:5px; font-weight: bold; font-style: italic;">Was <span2>&dollar;{{ product.price }}</span2></p>
-								<p class="text-center" style="font-weight: bold;">Now &dollar;{{ product.price - (product.price * discount).toFixed(2) }}</p>
+								<p class="text-center product-price">Was &dollar;{{ product.price }}</p>
+								<p class="text-center savings">Save ({{ discountPercentage }}%)</p>
+								<p class="text-center" style="font-weight: bold;">Now &dollar;{{ (product.price - (product.price * discount)).toFixed(2) }}</p>
 							</div>
 							<div v-else>
 								<p class="text-center" style="padding-top:5px; font-weight: bold;">&dollar;{{ product.price }}</p>
@@ -1507,6 +1507,10 @@ Vue.component('product', {
 
 	// Computed Component.
 	computed: {	
+		// Method to calculate discount percentage in text format. Used with discountText.
+		discountPercentage() {
+			return (this.discount * 100).toFixed();
+		},
 		// Method to calculate shipping item qty based off cart count.
 		updatedShippingQty() {
 			// Calculate the new shippintItem.selectedQty based on cartItemCount.
@@ -1583,20 +1587,21 @@ new Vue({
 		// Method to set specific user data properties on sign in and display a notification.
 		signIn: function () {
 			if (this.premium) {
-				// If premium, set to non-premium state (Sign In)
+				// If premium false, set button text to non-premium state (Sign In).
 				this.premium = false;
 				this.freeshippingvalue = 50;
-				this.buttonText = 'Sign In'; // Set the button text
+				this.buttonText = 'Sign In'; // Set the button text.
 				notificationApp.addNotification(
 					'You have signed out. See you next time!',
 					'info',
 					3000 // Duration in milliseconds.
 				);
 			} else {
-				// If not premium, set to premium state (Sign Out)
+				// If premium, set button text to premium state (Sign Out).
 				this.premium = true;
+				this.discount = 0.2;
 				this.freeshippingvalue = 30;
-				this.buttonText = 'Sign Out'; // Set the button text
+				this.buttonText = 'Sign Out'; // Set the button text.
 				notificationApp.addNotification(
 					'Welcome back! Congratulations on being a premium meme-ber.',
 					'success',

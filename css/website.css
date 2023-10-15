@@ -298,12 +298,22 @@ p a{
     line-height: 33px; /* Adjust the line-height to vertically center the text */
 }
 
-span2 {
-    text-decoration: line-through;
-    color: red;
-    font-style: italic;
+/* Styling for product price amount */
+.product-price {
+    font-size: 18px; 
+    padding-top: 5px; 
+    font-style: italic; 
+    text-decoration: line-through; 
+    color:red;
 }
 
+/* Styling for savings percentage amount */
+.savings {
+    font-size: 18px; 
+    font-weight: bold; 
+    font-style: italic; 
+    color:red;
+}
 
 /* Shopping cart styles for mobile devices */
 @media (max-width: 992px) {
