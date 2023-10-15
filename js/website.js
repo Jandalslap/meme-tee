@@ -946,8 +946,12 @@ Vue.component('product', {
 					<div v-for="product in products" :key="product.id" class="col-lg-4 col-md-6 col-sm-12">
 						<div class="product-card">
 							<h2 class="text-center mt-2">{{ product.name }}</h2>
-							<!-- Div for product price -->
-							<div>
+							<!-- Div for product price. If customer is premium, product procing is shown as discounted on product cards -->
+							<div v-if="premium">
+								<p class="text-center" style="font-size: 18px; padding-top:5px; font-weight: bold; font-style: italic;">Was <span2>&dollar;{{ product.price }}</span2></p>
+								<p class="text-center" style="font-weight: bold;">Now &dollar;{{ product.price - (product.price * discount).toFixed(2) }}</p>
+							</div>
+							<div v-else>
 								<p class="text-center" style="padding-top:5px; font-weight: bold;">&dollar;{{ product.price }}</p>
 							</div>
 							<img :src="product.images[product.selectedColour][product.selectedSide]" alt="Product Image" class="img-fluid">

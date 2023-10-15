@@ -298,6 +298,12 @@ p a{
     line-height: 33px; /* Adjust the line-height to vertically center the text */
 }
 
+span2 {
+    text-decoration: line-through;
+    color: red;
+    font-style: italic;
+}
+
 
 /* Shopping cart styles for mobile devices */
 @media (max-width: 992px) {
