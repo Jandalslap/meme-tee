@@ -395,6 +395,53 @@ Vue.component('product', {
 		},
 		{
 			id: 7,
+			name: 'House',
+			images: {
+				black: {
+				  	front: 'images/house_black_front.jpg',
+				  	back: 'images/house_black_back.jpg',
+				},
+				white: {
+				  	front: 'images/house_white_front.jpg',
+				  	back: 'images/house_white_back.jpg',
+				},
+			},
+			description: 'Unisex, 80% cotton, 20% polyester',
+			price: 19.95,
+			selectedColour: 'white', // Initial colour. Initialise for deault image.
+			selectedSide: 'front', // Initial side.
+			selectedSize: 'Size', // Display value string 'Size'.
+			// Stock on hand array for both product colors in all sizes with starting values.
+			stockOnHand: {
+				black: {
+					XS: 1,
+					S: 5,
+					M: 5,
+					L: 5,
+					XL: 3,
+					XXL: 1
+				},
+				white: {
+					XS: 1,
+					S: 5,
+					M: 5,
+					L: 5,
+					XL: 3,
+					XXL: 1
+				}
+			},
+        	selectedQty: 'Qty', // Display value string 'Qty'.
+			showReviewForm: false, // Initial state is hidden.
+			reviews: [], // New review array
+			showReviews: false,	// Initial state is hidden.
+			// New review object.
+			newReview: {
+			name: '',
+			review: '',
+			},				
+		},
+		{
+			id: 8,
 			name: 'Jim Carrey',
 			images: {
 				black: {
@@ -441,7 +488,7 @@ Vue.component('product', {
 			},				
 		},
 		{
-			id: 8,
+			id: 9,
 			name: 'Kanye West',
 			images: {
 				black: {
@@ -488,7 +535,7 @@ Vue.component('product', {
 			},				
 		},
 		{
-			id: 9,
+			id: 10,
 			name: 'Mark Ruffalo',
 			images: {
 				black: {
@@ -535,7 +582,7 @@ Vue.component('product', {
 			},				
 		},
 		{
-			id: 10,
+			id: 11,
 			name: 'Morgan Freeman',
 			images: {
 				black: {
@@ -582,7 +629,7 @@ Vue.component('product', {
 			},				
 		},
 		{
-			id: 11,
+			id: 12,
 			name: 'Rainn Wilson',
 			images: {
 				black: {
@@ -629,7 +676,7 @@ Vue.component('product', {
 			},				
 		},
 		{
-			id: 12,
+			id: 13,
 			name: 'Ray Charles',
 			images: {
 				black: {
@@ -676,7 +723,7 @@ Vue.component('product', {
 			},				
 		},
 		{
-			id: 13,
+			id: 14,
 			name: 'Reece Witherspoon',
 			images: {
 				black: {
@@ -723,7 +770,7 @@ Vue.component('product', {
 			},				
 		},
 		{
-			id: 14,
+			id: 15,
 			name: 'Rob Lowe',
 			images: {
 				black: {
@@ -770,7 +817,7 @@ Vue.component('product', {
 			},				
 		},
 		{
-			id: 15,
+			id: 16,
 			name: 'Robert De Niro',
 			images: {
 				black: {
@@ -817,7 +864,7 @@ Vue.component('product', {
 			},				
 		},
 		{
-			id: 16,
+			id: 17,
 			name: 'Thor',
 			images: {
 				black: {
@@ -864,7 +911,7 @@ Vue.component('product', {
 			},				
 		},
 		{
-			id: 17,
+			id: 18,
 			name: 'Willem Dafoe',
 			images: {
 				black: {
