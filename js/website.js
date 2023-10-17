@@ -1631,7 +1631,7 @@ new Vue({
 	},
 	// Instance Method Component.
 	methods: {
-		// Method to set specific user data properties on sign in and display a notification.
+		// Method to set specific user data properties for the sign in and display a notification.
 		signIn: function () {
 			if (this.premium) {
 				// If premium false, set button text to non-premium state (Sign In).
@@ -1646,7 +1646,7 @@ new Vue({
 			} else {
 				// If premium, set button text to premium state (Sign Out).
 				this.premium = true;
-				this.discount = 0.2;
+				this.discount = 0.15;
 				this.freeshippingvalue = 30;
 				this.buttonText = 'Sign Out'; // Set the button text.
 				notificationApp.addNotification(
