@@ -1,6 +1,6 @@
 /* Javascript for Vue Website */
 
-// Global event bus.
+// Global event bus. A Vue instance enabling different components to emit and listen to events.
 const eventBus = new Vue();
 
 // Create a new constant Vue instance for notifications.

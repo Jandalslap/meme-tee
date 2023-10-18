@@ -20,8 +20,8 @@
         <!-- Font-Awesome - for all fab fa icons -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.css">
 
+        <!-- Custom CSS to override Bootstrap and center-align the collapsed navigation menu links -->
         <style>
-            /* Custom CSS to verride Bootstrap and center-align the collapsed navigation menu links */
             @media (max-width: 992px) {
                 .navbar-collapse .navbar-nav {
                     text-align: center;
@@ -32,7 +32,6 @@
                 }
             }
         </style>
-
     </head>
     <body>
         <!-- The div element to render Vue screen notifications -->
@@ -84,10 +83,6 @@
             <!-- Padding for line break effect -->
             <div class="padding">
             </div>
-
-            
-
-
 
             <!-- Bind premium property to the product component -->
             <product :premium="premium" :discount="discount" :freeshippingoffer="freeshippingoffer" :freeshippingvalue="freeshippingvalue"></product>	
@@ -150,7 +145,6 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
         <!-- Vue CDN -->
         <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
-
 
         <!-- Internal javascript file -->
         <script src="js/website.js"></script>
