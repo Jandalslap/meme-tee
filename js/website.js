@@ -1028,7 +1028,7 @@ Vue.component('product', {
 								</div>							
 								<div class ="col-6">  
 									<div class="product-card h-100">
-									<h6>Select</h6>
+										<h6>Select</h6>
 										<hr>
 										<!-- Div for product colour selection -->
 										<div class="row">
@@ -1062,7 +1062,7 @@ Vue.component('product', {
 										<div class="row p-2">
 											<!-- Div for product SOH display based on colour and size -->
 											<div class="col-6 d-flex align-items-center justify-content-end">
-											<label for="sizeSelect" class="text-right">Stock:</label>
+												<label for="sizeSelect" class="text-right">Stock:</label>
 											</div>
 											<div class="col-6 d-flex align-items-center justify-content-start">
 												<div class="stock-on-hand-box ml-2">
@@ -1093,6 +1093,10 @@ Vue.component('product', {
 							</div>
 							<!-- Padding for line break effect -->
 							<div class="padding">
+							</div>
+							<!-- Out of Stock message if user tries to select a qty when stock is 0 for selected colour and size -->
+							<div v-if="product.selectedSize !== 'Size' && product.selectedQty !== 'Qty' && product.stockOnHand[product.selectedColour][product.selectedSize] === 0">
+								<h6 class=" text-center pt-2" style="color:red;">Out of Stock in this Size and Colour</h6>
 							</div>
 							<!-- Add to cart button. Hidden unless valid selections made. -->
 							<div>
@@ -1286,8 +1290,8 @@ Vue.component('product', {
 			
 				if (product) {
 					// Increment the SOH for the removed item's colour and size.
-					product.stockOnHand[removedItem.selectedColour][removedItem.selectedSize] += parseInt(removedItem.selectedQty);
-				}
+					product.stockOnHand[removedItem.selectedColour][removedItem.selectedSize] += parseInt(removedItem.selectedQty);									
+				} 			
 			}
 		
 			// Clear the cart by setting it to an empty array.
@@ -1468,11 +1472,12 @@ Vue.component('product', {
 		this.showCart = !this.showCart;
 		},
 
-		// Method to check if colour, size, and quantity have been selected.
+		// Method to check if colour, size, and quantity have been selected, and if SOH is not 0 for selected colour and size.
 		validateSelection(product) {
 		return (
 			product.selectedSize !== 'Size' &&
-			product.selectedQty !== 'Qty'
+			product.selectedQty !== 'Qty' &&
+			product.stockOnHand[product.selectedColour][product.selectedSize] !== 0
 		);
 		},
 
@@ -1521,7 +1526,7 @@ Vue.component('product', {
 			if (product) {
 				// Increment the SOH for the removed item's colour and size.
 				product.stockOnHand[removedItem.selectedColour][removedItem.selectedSize] += parseInt(
-					removedItem.selectedQty
+					removedItem.selectedQty,
 				);
 			}
 		},
