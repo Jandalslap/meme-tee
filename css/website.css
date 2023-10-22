@@ -315,6 +315,19 @@ p a{
     color:red;
 }
 
+/* Styling to override bootstrap default font sizing on labels and select boxes in the Select product card */
+.col-6 select {
+    font-size: 13px; /* Adjust the font size for smaller screens */
+}
+
+.col-6 label {
+    font-size: 14spx; /* Adjust the font size for smaller screens */
+}
+
+.stock-on-hand-box span {
+    font-size: 13px; /* Adjust the font size for smaller screens */
+}
+
 @media (max-width: 1400px) {
 
     .col-6 select {
