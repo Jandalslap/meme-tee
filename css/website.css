@@ -341,5 +341,9 @@ p a{
         padding: 5px; /* Add padding to table cells for better spacing */
         font-size: 9px; /* Adjust font size as needed for mobile */
     }
+
+    select {
+        font-size: 8px; /* Adjust the font size for smaller screens */
+    }
     
 }
