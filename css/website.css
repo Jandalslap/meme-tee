@@ -321,7 +321,7 @@ p a{
 }
 
 .col-6 label {
-    font-size: 14spx; /* Adjust the font size for smaller screens */
+    font-size: 14px; /* Adjust the font size for smaller screens */
 }
 
 .stock-on-hand-box span {
