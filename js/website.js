@@ -1018,9 +1018,7 @@ Vue.component('product', {
 									<div class="product-card h-100">
 										<h6>Description</h6>
 										<hr>
-										<!-- Padding for line break effect -->
-										<div class="padding">
-										</div>
+										<br>
 										<ul style="text-align: left;">
 											<li class="pb-2" v-for="item in product.description.split(', ')">{{ item }}</li>
 										</ul>
