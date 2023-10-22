@@ -343,7 +343,11 @@ p a{
     }
 
     .col-6 select {
-        font-size: 12px; /* Adjust the font size for smaller screens */
+        font-size: 11px; /* Adjust the font size for smaller screens */
+    }
+
+    .stock-on-hand-box span {
+        font-size: 11px; /* Adjust the font size for smaller screens */
     }
     
 }
