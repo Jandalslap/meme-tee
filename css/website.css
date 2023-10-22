@@ -342,7 +342,7 @@ p a{
         font-size: 9px; /* Adjust font size as needed for mobile */
     }
 
-    select {
+    .col-6 select {
         font-size: 8px; /* Adjust the font size for smaller screens */
     }
     
