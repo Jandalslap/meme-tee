@@ -124,7 +124,7 @@ Vue.component('product', {
 				  	back: 'images/arnold_white_back.jpg',
 				},
 			},
-			description: 'Unisex, 80% cotton, 20% polyester',
+			description: 'Unisex, 80% cotton, 20% polyester, 100% Awesome!',
 			price: 19.95,
 			selectedColour: 'white', // Initial colour. Initialise for deault image.
 			selectedSide: 'front', // Initial side.
@@ -171,7 +171,7 @@ Vue.component('product', {
 				  	back: 'images/christian_bale_white_back.jpg',
 				},
 			},
-			description: 'Unisex, 80% cotton, 20% polyester',
+			description: 'Unisex, 80% cotton, 20% polyester, 100% Awesome!',
 			price: 19.95, // Price value.
 			selectedColour: 'white', // Initial colour. Initialise for deault image.
 			selectedSide: 'front', // Initial side.
@@ -218,7 +218,7 @@ Vue.component('product', {
 				  	back: 'images/gary_oldman_white_back.jpg',
 				},
 			},
-			description: 'Unisex, 80% cotton, 20% polyester',
+			description: 'Unisex, 80% cotton, 20% polyester, 100% Awesome!',
 			price: 19.95,
 			selectedColour: 'white', // Initial colour. Initialise for deault image.
 			selectedSide: 'front', // Initial side.
@@ -265,7 +265,7 @@ Vue.component('product', {
 				  	back: 'images/gene_wilder_white_back.jpg',
 				},
 			},
-			description: 'Unisex, 80% cotton, 20% polyester',
+			description: 'Unisex, 80% cotton, 20% polyester, 100% Awesome!',
 			price: 19.95,
 			selectedColour: 'white', // Initial colour. Initialise for deault image.
 			selectedSide: 'front', // Initial side.
@@ -312,7 +312,7 @@ Vue.component('product', {
 				  	back: 'images/gerard_butler_white_back.jpg',
 				},
 			},
-			description: 'Unisex, 80% cotton, 20% polyester',
+			description: 'Unisex, 80% cotton, 20% polyester, 100% Awesome!',
 			price: 19.95,
 			selectedColour: 'white', // Initial colour. Initialise for deault image.
 			selectedSide: 'front', // Initial side.
@@ -359,7 +359,7 @@ Vue.component('product', {
 				  	back: 'images/glenn_close_white_back.jpg',
 				},
 			},
-			description: 'Unisex, 80% cotton, 20% polyester',
+			description: 'Unisex, 80% cotton, 20% polyester, 100% Awesome!',
 			price: 19.95,
 			selectedColour: 'white', // Initial colour. Initialise for deault image.
 			selectedSide: 'front', // Initial side.
@@ -406,7 +406,7 @@ Vue.component('product', {
 				  	back: 'images/house_white_back.jpg',
 				},
 			},
-			description: 'Unisex, 80% cotton, 20% polyester',
+			description: 'Unisex, 80% cotton, 20% polyester, 100% Awesome!',
 			price: 19.95,
 			selectedColour: 'white', // Initial colour. Initialise for deault image.
 			selectedSide: 'front', // Initial side.
@@ -453,7 +453,7 @@ Vue.component('product', {
 				  	back: 'images/jim_carrey_white_back.jpg',
 				},
 			},
-			description: 'Unisex, 80% cotton, 20% polyester',
+			description: 'Unisex, 80% cotton, 20% polyester, 100% Awesome!',
 			price: 19.95,
 			selectedColour: 'white', // Initial colour. Initialise for deault image.
 			selectedSide: 'front', // Initial side.
@@ -500,7 +500,7 @@ Vue.component('product', {
 				  	back: 'images/kanya_west_white_back.jpg',
 				},
 			},
-			description: 'Unisex, 80% cotton, 20% polyester',
+			description: 'Unisex, 80% cotton, 20% polyester, 100% Awesome!',
 			price: 19.95,
 			selectedColour: 'white', // Initial colour. Initialise for deault image.
 			selectedSide: 'front', // Initial side.
@@ -547,7 +547,7 @@ Vue.component('product', {
 				  	back: 'images/mark_ruffalo_white_back.jpg',
 				},
 			},
-			description: 'Unisex, 80% cotton, 20% polyester',
+			description: 'Unisex, 80% cotton, 20% polyester, 100% Awesome!',
 			price: 19.95,
 			selectedColour: 'white', // Initial colour. Initialise for deault image.
 			selectedSide: 'front', // Initial side.
@@ -594,7 +594,7 @@ Vue.component('product', {
 				  	back: 'images/morgan_freeman_white_back.jpg',
 				},
 			},
-			description: 'Unisex, 80% cotton, 20% polyester',
+			description: 'Unisex, 80% cotton, 20% polyester, 100% Awesome!',
 			price: 19.95,
 			selectedColour: 'white', // Initial colour. Initialise for deault image.
 			selectedSide: 'front', // Initial side.
@@ -641,7 +641,7 @@ Vue.component('product', {
 				  	back: 'images/rainn_wilson_white_back.jpg',
 				},
 			},
-			description: 'Unisex, 80% cotton, 20% polyester',
+			description: 'Unisex, 80% cotton, 20% polyester, 100% Awesome!',
 			price: 19.95,
 			selectedColour: 'white', // Initial colour. Initialise for deault image.
 			selectedSide: 'front', // Initial side.
@@ -688,7 +688,7 @@ Vue.component('product', {
 				  	back: 'images/ray_charles_white_back.jpg',
 				},
 			},
-			description: 'Unisex, 80% cotton, 20% polyester',
+			description: 'Unisex, 80% cotton, 20% polyester, 100% Awesome!',
 			price: 19.95,
 			selectedColour: 'white', // Initial colour. Initialise for deault image.
 			selectedSide: 'front', // Initial side.
@@ -735,7 +735,7 @@ Vue.component('product', {
 				  	back: 'images/reece_witherspoon_white_back.jpg',
 				},
 			},
-			description: 'Unisex, 80% cotton, 20% polyester',
+			description: 'Unisex, 80% cotton, 20% polyester, 100% Awesome!',
 			price: 19.95,
 			selectedColour: 'white', // Initial colour. Initialise for deault image.
 			selectedSide: 'front', // Initial side.
@@ -782,7 +782,7 @@ Vue.component('product', {
 				  	back: 'images/rob_lowe_white_back.jpg',
 				},
 			},
-			description: 'Unisex, 80% cotton, 20% polyester',
+			description: 'Unisex, 80% cotton, 20% polyester, 100% Awesome!',
 			price: 19.95,
 			selectedColour: 'white', // Initial colour. Initialise for deault image.
 			selectedSide: 'front', // Initial side.
@@ -829,7 +829,7 @@ Vue.component('product', {
 				  	back: 'images/robert_de_niro_white_back.jpg',
 				},
 			},
-			description: 'Unisex, 80% cotton, 20% polyester',
+			description: 'Unisex, 80% cotton, 20% polyester, 100% Awesome!',
 			price: 19.95,
 			selectedColour: 'white', // Initial colour. Initialise for deault image.
 			selectedSide: 'front', // Initial side.
@@ -876,7 +876,7 @@ Vue.component('product', {
 				  	back: 'images/thor_white_back.jpg',
 				},
 			},
-			description: 'Unisex, 80% cotton, 20% polyester',
+			description: 'Unisex, 80% cotton, 20% polyester, 100% Awesome!',
 			price: 19.95,
 			selectedColour: 'white', // Initial colour. Initialise for deault image.
 			selectedSide: 'front', // Initial side.
@@ -923,7 +923,7 @@ Vue.component('product', {
 				  	back: 'images/willem_dafoe_white_back.jpg',
 				},
 			},
-			description: 'Unisex, 80% cotton, 20% polyester',
+			description: 'Unisex, 80% cotton, 20% polyester, 100% Awesome!',
 			price: 19.95,
 			selectedColour: 'white', // Initial colour. Initialise for deault image.
 			selectedSide: 'front', // Initial side.
@@ -1018,8 +1018,7 @@ Vue.component('product', {
 									<div class="product-card h-100">
 										<h6>Description</h6>
 										<hr>
-										<br>
-										<ul style="text-align: left;">
+										<ul class="pt-2" style="text-align: left;">
 											<li class="pb-2" v-for="item in product.description.split(', ')">{{ item }}</li>
 										</ul>
 									</div>

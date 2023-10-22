@@ -315,6 +315,17 @@ p a{
     color:red;
 }
 
+@media (max-width: 1400px) {
+
+    .col-6 select {
+        font-size: 11px; /* Adjust the font size for smaller screens */
+    }
+
+    .stock-on-hand-box span {
+        font-size: 11px; /* Adjust the font size for smaller screens */
+    }
+}
+
 /* Shopping cart styles for mobile devices */
 @media (max-width: 992px) {
     .shopping-cart {
@@ -340,14 +351,6 @@ p a{
     th, td {
         padding: 5px; /* Add padding to table cells for better spacing */
         font-size: 9px; /* Adjust font size as needed for mobile */
-    }
-
-    .col-6 select {
-        font-size: 11px; /* Adjust the font size for smaller screens */
-    }
-
-    .stock-on-hand-box span {
-        font-size: 11px; /* Adjust the font size for smaller screens */
     }
     
 }
