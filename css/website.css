@@ -328,14 +328,15 @@ p a{
     font-size: 13px; /* Adjust the font size for smaller screens */
 }
 
+/* Styling to override bootstrap default font sizing on labels and select boxes in the Select product card */
 @media (max-width: 1400px) {
 
     .col-6 select {
-        font-size: 11px; /* Adjust the font size for smaller screens */
+        font-size: 11px; /* Adjust the font size for smaller screens for text overlap */
     }
 
     .stock-on-hand-box span {
-        font-size: 11px; /* Adjust the font size for smaller screens */
+        font-size: 11px; /* Adjust the font size for smaller screens for text overlap */
     }
 }
 
