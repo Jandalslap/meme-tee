@@ -1015,7 +1015,7 @@ Vue.component('product', {
 							<div class="row">  					
 								<!-- Div to loop through product description array and list contents -->  
 								<div class="col-6">
-									<div class="product-card h-100 pb-0 ml-0">
+									<div class="description product-card h-100 pb-0 ml-0">
 										<h6>Description</h6>
 										<hr>
 										<ul class="pt-2" style="text-align: left;">
