@@ -1028,7 +1028,7 @@ Vue.component('product', {
 										<h6>Select</h6>
 										<hr>
 										<!-- Div for product colour selection -->
-										<div class="row">
+										<div class="row pt-1">
 											<div class="col-6 d-flex align-items-center justify-content-end">
 												<label for="colourSelect" class="text-right">Colour:</label>
 											</div>
