@@ -343,7 +343,7 @@ p a{
     }
 
     .col-6 select {
-        font-size: 8px; /* Adjust the font size for smaller screens */
+        font-size: 12px; /* Adjust the font size for smaller screens */
     }
     
 }
