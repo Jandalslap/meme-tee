@@ -238,6 +238,20 @@ p a{
     box-sizing: border-box; /* Include border and padding in total width */
 }
 
+/* Styling for dark theme */
+.dark-theme .product-card {
+    background-color: #333;
+}
+
+.dark-theme .padding {
+    background-color: grey;
+}
+
+.dark-theme .fas {
+    color: black;
+}
+
+
 /* Middle product card columns less margin */
 .custom-middle-column {
     margin: 10px 5px; /* Adjust margin as needed */

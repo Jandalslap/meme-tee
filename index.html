@@ -37,8 +37,8 @@
         <!-- The div element to render Vue screen notifications -->
         <div id="notification-app">
         </div>
-        <!-- The div element to render Vue app instance -->
-        <div id="app">
+        <!-- The div element to render Vue app instance. Includes theme bindings -->
+        <div id="app" :class="{ 'light-theme': isLightTheme, 'dark-theme': isDarkTheme }">
             <!-- Navigation bar start -->
             <nav id="top" class="navbar navbar-dark navbar-expand-lg" style="background-color: #000000; padding-top: 30px; padding-bottom: 15px;">
 
@@ -70,6 +70,15 @@
             </nav>
             <!-- Navigation bar end -->
 
+            <!-- Padding for line break effect -->
+            <div class="padding">
+            </div>
+            
+            <!-- Button to toggle the colour theme -->
+            <div class="d-flex justify-content-end">
+                <button class = "btn btn-warning" @click="toggleTheme">Toggle Theme</button>
+            </div>
+
             <!-- Page Heading -->
             <h1 class="page-heading">
                 <!-- Meme-Tee Logo -->
@@ -80,16 +89,13 @@
                 <span class="black-text">Meme-</span><span class="blue-text">Tee</span>           
             </h1>
 
+            <!-- Bind premium property to the product component -->
+            <product :premium="premium" :discount="discount" :freeshippingoffer="freeshippingoffer" :freeshippingvalue="freeshippingvalue"></product>	
+
             <!-- Padding for line break effect -->
             <div class="padding">
             </div>
-
-            <!-- Bind premium property to the product component -->
-            <product :premium="premium" :discount="discount" :freeshippingoffer="freeshippingoffer" :freeshippingvalue="freeshippingvalue"></product>	
-        </div>
-      
-        <!-- Padding for line break effect -->
-        <div class="padding">
+            
         </div>
 
         <!-- Footer start -->

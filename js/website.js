@@ -1444,8 +1444,8 @@ Vue.component('product', {
 					);
 				}			
 
-				// Emit a custom event to the event bus. Used to notify other parts of the application when an item is added to the cart. 
-				eventBus.$emit('addToCart', product); // Good practice but not used in this assignment.
+				// Emit an event to the event bus.
+				eventBus.$emit('addToCart', product); 
 		
 				// Increment the cart item count by the selected quantity.
 				this.cartItemCount += parseInt(product.selectedQty);
@@ -1630,9 +1630,28 @@ new Vue({
 		freeshippingoffer: true, // Toggle free shipping offer.
 		freeshippingvalue: 50, // Changes calculation for free shipping offer and ad banner text.
 		buttonText: 'Sign In', // Initialise the Sign In button text.
+		isLightTheme: true, // Default is light theme.
+        isDarkTheme: false, // Initialise the dark theme to false.
 	},
 	// Instance Method Component.
 	methods: {
+		// Method to toggle theme and emit event to eventBus.
+		toggleTheme() {
+			this.isLightTheme = !this.isLightTheme;
+			this.isDarkTheme = !this.isDarkTheme;
+			eventBus.$emit('themeToggled', this.isDarkTheme);
+		  },
+		// Method to change product card colour for dark theme.
+		updateProductCardColors(isDarkTheme) {
+			const productCards = document.querySelectorAll('.product-card');
+			productCards.forEach((card) => {
+			  if (isDarkTheme) {
+				card.style.backgroundColor = 'grey';
+			  } else {
+				card.style.backgroundColor = 'white';
+			  }
+			});
+		},
 		// Method to set specific user data properties for the sign in and display a notification.
 		signIn: function () {
 			if (this.premium) {
@@ -1661,5 +1680,22 @@ new Vue({
 	}
 });
 
-
+// Secondary Vue instance for eventBus listener.
+new Vue({
+	// Created Component.
+	created() {
+		// Theme button toggle.
+		eventBus.$on('themeToggled', (isDarkTheme) => {
+			if (isDarkTheme) {
+				// Change styles for dark theme.
+				document.body.style.backgroundColor = 'grey';
+				document.body.style.color = 'white';
+			} else {
+				// Change styles for light theme.
+				document.body.style.backgroundColor = 'white';
+				document.body.style.color = 'black';
+			}
+		});
+	},
+});
 
