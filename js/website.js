@@ -1640,6 +1640,9 @@ Vue.component('product', {
 });
 
 // Create a new dynamic vue instance called #app. Only dynamic properties specific to each user login go here.
+/* The main Vue instance serves as the root of a Vue application, orchestrating the entire app's behaviour. It encapsulates 
+data, methods, computed properties, and lifecycle hooks, facilitating reactivity and managing the application's components, 
+directives, and plugins, ensuring cohesive functionality overall. */
 new Vue({
 	el: '#app',
 	// Instance Data Component.
