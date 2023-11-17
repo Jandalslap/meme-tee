@@ -50,6 +50,9 @@ notificationApp.$mount('#notification-app');
 
 
 // Create a Vue Component called product.
+/* This component holds the properties, data, html template and main methods of the sale items and their interactivity on this website. 
+The core information of each product is stored in an array identified with a product ID. Vue uses a template loop to display each product
+by binding it to the html page. */
 Vue.component('product', {
 	// Properties Component.
 	/* Properties or props in Vue.js components serve the purpose of passing data from a parent component to a child component. 
