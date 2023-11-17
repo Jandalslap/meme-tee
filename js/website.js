@@ -1,6 +1,9 @@
 /* Javascript for Vue Website */
 
 // Global event bus. A Vue instance enabling different components to emit and listen to events.
+/* The EventBus in Vue.js serves as a centralized communication hub allowing components to emit and listen for events, 
+enabling seamless communication and data sharing between unrelated components without direct parent-child relationships, 
+enhancing modularity and reusability in Vue applications. */
 const eventBus = new Vue();
 
 // Create a new constant Vue instance for notifications.
@@ -49,6 +52,9 @@ notificationApp.$mount('#notification-app');
 // Create a Vue Component called product.
 Vue.component('product', {
 	// Properties Component.
+	/* Properties or props in Vue.js components serve the purpose of passing data from a parent component to a child component. 
+	Props allow for the communication of data downwards in the component hierarchy, enabling the customization and configuration 
+	of child components based on the data received from their parent components. */
 	props: {
 		premium: {
 			type: Boolean,
@@ -69,6 +75,9 @@ Vue.component('product', {
 	},
 
 	// Watch Component.
+	/* The watch component in Vue.js monitors changes to specific data properties and executes defined functions when these 
+	properties change. It enables reactive responses to data modifications, allowing developers to perform custom actions, 
+	or computations in response to data changes. */
 	watch: {
 		// Watch for changes in product.selectedColour and update image.
 		'product.selectedColour': function (newColour, oldColour) {
@@ -82,6 +91,9 @@ Vue.component('product', {
 	},
 
 	// Data Component. Only static properties that remain the same for each customer go here.
+	/* In Vue.js, the data component is a reserved section where a component stores its reactive data, accessible within 
+	the component's template and methods. It holds the state of the component, facilitating dynamic content rendering and automatic 
+	reactivity to changes, enhancing Vue's declarative and responsive nature. */
 	data() {
 		return {	
 		selectedRating: 0, // Initialise to 0 for no rating.
@@ -961,6 +973,9 @@ Vue.component('product', {
 	}},
 
 	// Template Component.
+	/* In Vue.js, the template component defines the structure of a component's view, utilizing HTML-based syntax with 
+	Vue-specific directives and data bindings. It presents the visual representation of data, allowing dynamic rendering and 
+	interaction, facilitating the creation of reusable, modular, and reactive user interfaces within Vue applications. */
 	template: `
 		<div>
 			<div>		
@@ -1277,6 +1292,9 @@ Vue.component('product', {
 	`,
 
 	// Method Component.
+	/* In Vue.js, the method component houses reusable functions within a component, enabling the execution of specific actions 
+	or logic in response to events or data changes. It enhances code organization, facilitating modular and maintainable Vue 
+	applications by encapsulating behaviour and enabling shared functionality across components. */
 	methods: {
 		// Clear cart method.
 		clearCart() {
@@ -1555,6 +1573,8 @@ Vue.component('product', {
 	},
 
 	// Computed Component.
+	/* In Vue.js, the computed component generates reactive data based on other data properties, allowing for dynamic calculations 
+	and derived values. It offers cached and reactive computations, optimizing performance by recalculating only when necessary. */
 	computed: {	
 		// Method to calculate discount percentage in text format. Used with discountText.
 		discountPercentage() {
@@ -1622,7 +1642,7 @@ Vue.component('product', {
 // Create a new dynamic vue instance called #app. Only dynamic properties specific to each user login go here.
 new Vue({
 	el: '#app',
-	// Instance Data Ccomponent.
+	// Instance Data Component.
 	data: {
 		// Change properties as required.
 		premium: false, // Toggle premium customer.
@@ -1680,9 +1700,12 @@ new Vue({
 	}
 });
 
-// Secondary Vue instance for eventBus listener.
+// Vue instance for eventBus listener.
 new Vue({
 	// Created Component.
+	/* The created lifecycle hook in Vue.js is utilized to set up an EventBus listener upon component initialization. 
+	It allows components to subscribe to specific EventBus events, establishing communication channels to react to and handle 
+	emitted events throughout the component's lifecycle, ensuring responsive and coordinated behaviour among various components. */
 	created() {
 		// Theme button toggle.
 		eventBus.$on('themeToggled', (isDarkTheme) => {
