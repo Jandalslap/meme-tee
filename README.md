@@ -4,7 +4,7 @@ Visit: https://meme-tee.netlify.app/
 
 # This assignment was to create a product and a website product page to sell it on.
 
-# We had to use utilise Vue to template the stock properties and iterate the items over the page. 
+# We had to use utilise Vue js to template the stock properties and iterate the items over the page. 
 
 # We also needed to create a checkout are to calculate shipping and totals of the shopping cart.
 
