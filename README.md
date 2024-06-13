@@ -1,4 +1,4 @@
-### PRODUCT PAGE ONLY ###
+# *** PRODUCT PAGE ONLY ***
 
 Visit: https://meme-tee.netlify.app/
 
